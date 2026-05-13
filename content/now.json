@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-05-13",
+      "title": "Narzędzie do analizy firm i generowania raportów",
+      "body": "Stworzone narzędzie łączy dane firmowe z AI, generując dynamiczne raporty. Obsługuje analizę branżową i wyciąganie wniosków dla klientów.",
+      "tag": "tooling",
+      "auto": true
+    },
+    {
       "date": "2026-05-10",
       "title": "Fix: fonty Google nie ładowały się lokalnie",
       "body": "Space Grotesk, Fraunces i JetBrains Mono cichaczem fallbackowały na systemowe — Next.js nie radził sobie z certyfikatem SSL Google Fonts w lokalnym dev. Cross-env z NODE_TLS_REJECT_UNAUTHORIZED w skrypcie dev rozwiązuje sprawę, typografia portfolio ostatecznie spójna na każdym środowisku.",
