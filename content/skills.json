@@ -1,0 +1,24 @@
+{
+  "groups": [
+    {
+      "name": "AI / LLM",
+      "items": ["Claude Code", "Claude API", "Ollama", "MCP", "Prompt Engineering", "RAG", "Embeddings"]
+    },
+    {
+      "name": "Web / Frontend",
+      "items": ["Next.js 15", "React 19", "Three.js", "GSAP", "Lenis", "Tailwind", "TypeScript"]
+    },
+    {
+      "name": "Automatyzacje",
+      "items": ["n8n", "Webhooks", "Claude API loops", "OCR", "KSeF", "Google Sheets API"]
+    },
+    {
+      "name": "Wideo / Audio / Foto",
+      "items": ["Higgsfield", "Suno", "CapCut", "Filmora", "Photoshop", "Blender"]
+    },
+    {
+      "name": "DevOps / Infra",
+      "items": ["WSL", "Docker", "PowerShell", "GitHub", "Vercel"]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio-adam",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "-p", "3035"],
+      "port": 3035,
+      "cwd": "C:\\Users\\adamb\\OneDrive\\Desktop\\portfolio-adam"
+    }
+  ]
+}

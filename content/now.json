@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "date": "2026-05-10",
+      "title": "Fix: fonty Google nie ładowały się lokalnie",
+      "body": "Space Grotesk, Fraunces i JetBrains Mono cichaczem fallbackowały na systemowe — Next.js nie radził sobie z certyfikatem SSL Google Fonts w lokalnym dev. Cross-env z NODE_TLS_REJECT_UNAUTHORIZED w skrypcie dev rozwiązuje sprawę, typografia portfolio ostatecznie spójna na każdym środowisku.",
+      "tag": "tooling"
+    },
+    {
+      "date": "2026-05-09",
+      "title": "Premiera portfolio — cinematic web w produkcji",
+      "body": "Postawiłem własną stronę-wizytówkę w cinematic stacku: GLSL shader hero z ciepłymi falami, asymetryczna siatka prac z 3D rotation entry, oraz editorial \"End of Issue\" imprint z registration marks, metadata grid i gigantycznym wordmarkiem. Pierwsze produkcyjne wdrożenie metodyki z mojego skill-a cinematic-web.",
+      "tag": "build"
+    },
+    {
+      "date": "2026-05-08",
+      "title": "Cinematic web stack — pełen pipeline",
+      "body": "Spiąłem starter Next.js 15 + Three.js + GSAP + Lenis w jeden skill. Każda nowa strona startuje teraz z parallax, particle field i smooth scroll out-of-the-box.",
+      "tag": "skill"
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Claude Code marketplace — 14 pluginów aktywnych",
+      "body": "Zinstallowałem feature-dev, code-review, context7, playwright, commit-commands, claude-mem. Każdy zmienia jak pracuję z modelem.",
+      "tag": "tooling"
+    },
+    {
+      "date": "2026-05-05",
+      "title": "n8n + Claude API — pierwsza autonomiczna pętla",
+      "body": "Workflow który sam pisze sobie kontekst, woła Claude API, ocenia output i decyduje czy ponowić. Loopuje aż wynik przejdzie validation step.",
+      "tag": "automation"
+    },
+    {
+      "date": "2026-05-03",
+      "title": "Suno v4 — dłuższe struktury",
+      "body": "Test Suno v4: 4-minutowy track z bridge'em. Wciąż ucina vocale na końcu, ale struktura zaczyna trzymać formę.",
+      "tag": "music"
+    },
+    {
+      "date": "2026-05-01",
+      "title": "Higgsfield camera presets",
+      "body": "Eksperymenty z dolly + crane + arc. \"Dolly in slow\" + \"low angle\" daje kinematograficzny look bez ruszania klawiatury.",
+      "tag": "ai-video"
+    },
+    {
+      "date": "2026-04-28",
+      "title": "Studio Elements — pierwsze pinned section",
+      "body": "Pinned scroll z 3 warstwami parallax na hero szkoły tańca. Lenis trzeba było resync z ScrollTriggerem inaczej scrub stutterował.",
+      "tag": "build"
+    }
+  ]
+}

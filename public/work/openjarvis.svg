@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="oj-bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1a1410"/>
+      <stop offset="100%" stop-color="#050403"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#oj-bg)"/>
+  <g transform="translate(400 500)">
+    <circle r="80" fill="none" stroke="#d4a574" stroke-width="1.2" opacity="0.9"/>
+    <circle r="140" fill="none" stroke="#d4a574" stroke-width="0.8" opacity="0.6" stroke-dasharray="3 8"/>
+    <circle r="200" fill="none" stroke="#d4a574" stroke-width="0.5" opacity="0.4"/>
+    <circle r="260" fill="none" stroke="#d4a574" stroke-width="0.4" opacity="0.25" stroke-dasharray="2 14"/>
+    <g stroke="#d4a574" stroke-width="2">
+      <line x1="-30" y1="0" x2="-22" y2="0"/>
+      <line x1="-14" y1="-12" x2="-14" y2="12"/>
+      <line x1="-2" y1="-22" x2="-2" y2="22"/>
+      <line x1="10" y1="-30" x2="10" y2="30"/>
+      <line x1="22" y1="-18" x2="22" y2="18"/>
+      <line x1="34" y1="-8" x2="34" y2="8"/>
+    </g>
+  </g>
+  <text x="60" y="940" font-family="ui-monospace, monospace" font-size="11" fill="#d4a574" letter-spacing="3" opacity="0.7">// OPENJARVIS — LOCAL VOICE AI</text>
+  <text x="60" y="80" font-family="ui-monospace, monospace" font-size="10" fill="#d4a574" letter-spacing="2" opacity="0.55">qwen3:8b · WSL · :5173</text>
+</svg>

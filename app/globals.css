@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0a0908;
+  --color-fg: #f5f1ea;
+  --color-accent: #d4a574;
+  --color-accent-dark: #a8632d;
+}
+
+html {
+  background: var(--color-bg);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  overscroll-behavior: none;
+}
+
+/* Hide native cursor on desktop — replaced by MagneticCursor */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  html * {
+    cursor: none !important;
+  }
+}
+
+/* Lenis smooth-scroll required styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Marquee for SkillsStrip */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Reduced motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html,
+  html * {
+    cursor: auto !important;
+  }
+}
+
+/* Custom selection */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* Smooth focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* Disable native scrollbar styling on body but keep accessible */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background: rgba(212, 165, 116, 0.25);
+  border-radius: 4px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 165, 116, 0.5);
+}

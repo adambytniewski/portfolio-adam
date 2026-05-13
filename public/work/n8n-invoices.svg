@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="n8-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d0c0b"/>
+      <stop offset="100%" stop-color="#1c130b"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#n8-bg)"/>
+  <g stroke="#d4a574" stroke-width="1.5" fill="none" opacity="0.8">
+    <circle cx="160" cy="220" r="30"/>
+    <circle cx="400" cy="320" r="30"/>
+    <circle cx="640" cy="220" r="30"/>
+    <circle cx="280" cy="500" r="30"/>
+    <circle cx="520" cy="500" r="30"/>
+    <circle cx="160" cy="780" r="30"/>
+    <circle cx="400" cy="680" r="30"/>
+    <circle cx="640" cy="780" r="30"/>
+  </g>
+  <g stroke="#a8632d" stroke-width="1" fill="none" opacity="0.6">
+    <path d="M190 220 Q 290 260 370 320"/>
+    <path d="M610 220 Q 510 260 430 320"/>
+    <path d="M400 350 Q 340 420 280 470"/>
+    <path d="M400 350 Q 460 420 520 470"/>
+    <path d="M280 530 Q 220 620 170 750"/>
+    <path d="M280 530 Q 340 620 400 650"/>
+    <path d="M520 530 Q 580 620 640 750"/>
+    <path d="M520 530 Q 460 620 400 650"/>
+  </g>
+  <g fill="#d4a574">
+    <circle cx="160" cy="220" r="4"/>
+    <circle cx="400" cy="320" r="6"/>
+    <circle cx="640" cy="220" r="4"/>
+    <circle cx="280" cy="500" r="4"/>
+    <circle cx="520" cy="500" r="4"/>
+    <circle cx="400" cy="680" r="6"/>
+  </g>
+  <text x="60" y="940" font-family="ui-monospace, monospace" font-size="11" fill="#d4a574" letter-spacing="3" opacity="0.7">// N8N — INVOICE PIPELINE</text>
+</svg>

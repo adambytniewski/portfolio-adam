@@ -1,0 +1,108 @@
+{
+  "items": [
+    {
+      "id": "second-brain",
+      "category": "app",
+      "title": "Second Brain",
+      "subtitle": "Samorozszerzająca się baza wiedzy",
+      "description": "System osobistej bazy wiedzy oparty o markdown, embeddings i MCP. Indeksuje, pamięta i przeszukuje wszystko co robię — bez fine-tuningu, czysty RAG.",
+      "tags": ["RAG", "MCP", "Embeddings", "Python", "Markdown"],
+      "stack": ["Claude Code", "MCP Server", "Vector DB"],
+      "date": "2026-04-12",
+      "cover": "/work/second-brain.svg",
+      "link": null,
+      "featured": true
+    },
+    {
+      "id": "studio-elements",
+      "category": "website",
+      "title": "Studio Elements",
+      "subtitle": "Strona szkoły tańca",
+      "description": "Cinematic landing page szkoły tańca w Next.js 15. Scroll-driven animations, 3D depth, custom typografia. Dev port :3030.",
+      "tags": ["Next.js 15", "GSAP", "Three.js", "Lenis"],
+      "stack": ["Next.js", "Tailwind", "GSAP"],
+      "date": "2026-04-28",
+      "cover": "/work/studio-elements.svg",
+      "link": null,
+      "featured": false
+    },
+    {
+      "id": "n8n-invoices",
+      "category": "automation",
+      "title": "Faktury → Excel pipeline",
+      "subtitle": "n8n workflow dla biur rachunkowych",
+      "description": "Automatyzacja: skan/PDF faktury wpada na webhook → OCR → ekstrakcja danych przez Claude → wpis do arkusza + KSeF. ~3 min/fv ręcznie → 8 sekund.",
+      "tags": ["n8n", "OCR", "KSeF", "Claude API"],
+      "stack": ["n8n", "Claude API", "Google Sheets"],
+      "date": "2026-04-20",
+      "cover": "/work/n8n-invoices.svg",
+      "link": null,
+      "featured": false
+    },
+    {
+      "id": "higgsfield-reel",
+      "category": "video",
+      "title": "Cinematic Reel — AI Generated",
+      "subtitle": "Higgsfield + post na CapCut",
+      "description": "Krótki film generowany w Higgsfield: scena → kamera → 5s shot. Cięcie i color grading w CapCut. Cinematic look bez kamery.",
+      "tags": ["Higgsfield", "AI Video", "CapCut", "Cinematic"],
+      "stack": ["Higgsfield", "CapCut"],
+      "date": "2026-05-01",
+      "cover": "/work/higgsfield-reel.svg",
+      "link": null,
+      "featured": false
+    },
+    {
+      "id": "ollama-jarvis",
+      "category": "app",
+      "title": "OpenJarvis (lokalny)",
+      "subtitle": "Voice assistant na Ollama",
+      "description": "Lokalny voice assistant na Ollama (qwen3:8b) w WSL. UI na :5173. Cała inferencja offline — żadne dane nie wychodzą z mojego laptopa.",
+      "tags": ["Ollama", "WSL", "Voice", "Local AI"],
+      "stack": ["Ollama", "qwen3:8b", "WSL"],
+      "date": "2026-03-15",
+      "cover": "/work/openjarvis.svg",
+      "link": null,
+      "featured": false
+    },
+    {
+      "id": "ai-photo-set",
+      "category": "photo",
+      "title": "AI Portrait Series",
+      "subtitle": "Studyjne portrety — full AI",
+      "description": "Seria portretów wygenerowanych w Higgsfield + retusz w Photoshop. Eksperyment z light setupami które trudno postawić w realu.",
+      "tags": ["Higgsfield", "Photoshop", "Portraits"],
+      "stack": ["Higgsfield", "Photoshop"],
+      "date": "2026-04-05",
+      "cover": "/work/ai-portraits.svg",
+      "link": null,
+      "featured": false
+    },
+    {
+      "id": "ambient-track-01",
+      "category": "music",
+      "title": "Ambient Track 01",
+      "subtitle": "Suno + ręczne edycje",
+      "description": "Pierwszy ambient track wygenerowany w Suno, potem edycja struktury i mastering. 3 minuty atmosfery do pracy w głębokim focusie.",
+      "tags": ["Suno", "Ambient", "Mastering"],
+      "stack": ["Suno", "DAW"],
+      "date": "2026-04-22",
+      "cover": "/work/ambient-01.svg",
+      "link": null,
+      "featured": false
+    },
+    {
+      "id": "claude-control",
+      "category": "automation",
+      "title": "Claude Control Workspace",
+      "subtitle": "Mój HQ dla Claude Code",
+      "description": "Workspace skonfigurowany pod Claude Code: pluginy (feature-dev, code-review, claude-mem, playwright), własne skille, hooks, scheduled tasks co 6h.",
+      "tags": ["Claude Code", "Plugins", "Hooks", "MCP"],
+      "stack": ["Claude Code", "PowerShell"],
+      "date": "2026-05-08",
+      "cover": "/work/claude-control.svg",
+      "link": null,
+      "featured": false
+    }
+  ]
+}
