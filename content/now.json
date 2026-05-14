@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-05-14",
+      "title": "Automatyzacja do monetyzacji 7 pomysłów",
+      "body": "Zrealizowano automatyzację procesu monetyzacji opartą na 7 różnych pomyslach. System umożliwia skalowanie i zarządzanie wieloma źródłami przychodu jednocześnie.",
+      "tag": "automation",
+      "auto": true
+    },
+    {
       "date": "2026-05-13",
       "title": "Narzędzie do analizy firm i generowania raportów",
       "body": "Stworzone narzędzie łączy dane firmowe z AI, generując dynamiczne raporty. Obsługuje analizę branżową i wyciąganie wniosków dla klientów.",
