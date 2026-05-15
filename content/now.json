@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-05-15",
+      "title": "Integracja narzędzi AI z Claude MCP API",
+      "body": "Zaimplementowano integrację narzędzi AI z API Claude MCP, umożliwiając bardziej dynamiczne przetwarzanie danych w systemach automatyzacji.",
+      "tag": "tooling",
+      "auto": true
+    },
+    {
       "date": "2026-05-14",
       "title": "Automatyzacja do monetyzacji 7 pomysłów",
       "body": "Zrealizowano automatyzację procesu monetyzacji opartą na 7 różnych pomyslach. System umożliwia skalowanie i zarządzanie wieloma źródłami przychodu jednocześnie.",
