@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-05-17",
+      "title": "Automatyzacja pracy z Claude Code",
+      "body": "Zaimplementowano system automatyzacji pracy z Claude Code, umożliwiający szybsze i bardziej skuteczne testowanie i debugowanie kodu.",
+      "tag": "automation",
+      "auto": true
+    },
+    {
       "date": "2026-05-16",
       "title": "Galaxy Brain Graph Plugin Gotowy",
       "body": "Zaimplementowano plugin do generowania grafów wizualnych na podstawie danych z Galaxy Brain. Umożliwia dynamiczne prezentowanie relacji i zależności w projekcie.",
