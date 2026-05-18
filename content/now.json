@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-05-18",
+      "title": "Zabezpieczone haslem 3 strony",
+      "body": "Zaimplementowano warstwę zabezpieczenia opartą na hasle dla 3 krytycznych stron. Rozwiązanie opiera się na szyfrowaniu danych i kontroli dostępu.",
+      "tag": "build",
+      "auto": true
+    },
+    {
       "date": "2026-05-17",
       "title": "Automatyzacja pracy z Claude Code",
       "body": "Zaimplementowano system automatyzacji pracy z Claude Code, umożliwiający szybsze i bardziej skuteczne testowanie i debugowanie kodu.",
