@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-05-19",
+      "title": "Iteracja 4: Tworzenie care plan i przygotowanie oferty",
+      "body": "Ukończono plan działania dla klienta, który zawiera kroki automatyzacji i integrację narzędzi AI. Przygotowano ofertę z wykorzystaniem nowych metod budowania workflow.",
+      "tag": "build",
+      "auto": true
+    },
+    {
       "date": "2026-05-18",
       "title": "Zabezpieczone haslem 3 strony",
       "body": "Zaimplementowano warstwę zabezpieczenia opartą na hasle dla 3 krytycznych stron. Rozwiązanie opiera się na szyfrowaniu danych i kontroli dostępu.",
