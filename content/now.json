@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-05-20",
+      "title": "Interaktywne grafiki galaktyczne",
+      "body": "Ulepszone grafiki galaktyczne zwiększają interaktywność i dynamiczność wizualizacji. Wdrożenie nowego systemu renderowania zwiększyło wydajność i jakość wizualną.",
+      "tag": "build",
+      "auto": true
+    },
+    {
       "date": "2026-05-19",
       "title": "Iteracja 4: Tworzenie care plan i przygotowanie oferty",
       "body": "Ukończono plan działania dla klienta, który zawiera kroki automatyzacji i integrację narzędzi AI. Przygotowano ofertę z wykorzystaniem nowych metod budowania workflow.",
