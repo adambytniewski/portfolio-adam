@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-05-22",
+      "title": "Zbudowano korpus faceless",
+      "body": "Ukończono pierwszą wersję korpusu danych z obrazami bez twarzy, przydatnego do trenowania modeli AI w kontekście prywatności i bezpieczeństwa. Realizacja obejmuje etykiety i metadane dla każdego obrazu.",
+      "tag": "build",
+      "auto": true
+    },
+    {
       "date": "2026-05-21",
       "title": "Iteracja pipeline architektury",
       "body": "Zrealizowano architekturę pipeline w wersji 2.0 z podziałem na moduły. Umożliwia skalowanie i debugowanie w czasie rzeczywistym.",
