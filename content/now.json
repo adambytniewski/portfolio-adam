@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-05-24",
+      "title": "Nowe narzędzie do generowania animacji scroll",
+      "body": "Zaimplementowano nowy system animacji scroll dla filmów na stronie, który dynamicznie reaguje na ruch kursora i zmienia tempo wizualizacji. Umożliwia bardziej zaawansowane interakcje z treścią.",
+      "tag": "tooling",
+      "auto": true
+    },
+    {
       "date": "2026-05-22",
       "title": "Zbudowano korpus faceless",
       "body": "Ukończono pierwszą wersję korpusu danych z obrazami bez twarzy, przydatnego do trenowania modeli AI w kontekście prywatności i bezpieczeństwa. Realizacja obejmuje etykiety i metadane dla każdego obrazu.",
