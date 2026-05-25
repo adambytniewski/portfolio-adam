@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "date": "2026-05-25",
+      "title": "Optymalizacja wydajności R3F",
+      "body": "Zaimplementowałem nową technikę optymalizacji wydajności R3F, która znacząco poprawia renderowanie w dużych scenach. Wdrożenie pozwala na szybsze ładowanie i płynniejsze działania.",
+      "tag": "tooling",
+      "auto": true
+    },
+    {
       "date": "2026-05-24",
       "title": "Nowe narzędzie do generowania animacji scroll",
       "body": "Zaimplementowano nowy system animacji scroll dla filmów na stronie, który dynamicznie reaguje na ruch kursora i zmienia tempo wizualizacji. Umożliwia bardziej zaawansowane interakcje z treścią.",
