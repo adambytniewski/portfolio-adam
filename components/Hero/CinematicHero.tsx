@@ -26,42 +26,45 @@ export default function CinematicHero() {
   useEffect(() => {
     const isMobile = window.matchMedia('(max-width: 767px)').matches
     const ctx = gsap.context(() => {
-      // === HERO ENTRY ANIMATION (one-time, on load) ===
-      // Te animacje są load-time (nie scroll), więc działają na mobile.
-      // Tylko skracamy delay żeby content szybciej był widoczny.
+      // === MOBILE: CAŁKOWICIE pomijamy hero entry animation ===
+      // Na iOS Safari gsap.from({yPercent: 110}) niestabilne — element może
+      // zostać uwięziony w overflow-hidden parenta jeśli animacja nie
+      // skompletuje się (font load race condition, prefers-reduced-motion).
+      // Lepiej pokazać content od razu niż ryzykować pustą stronę.
+      if (isMobile) {
+        gsap.set('.hero-line', { yPercent: 0, opacity: 1 })
+        gsap.set('.hero-meta', { opacity: 1, y: 0 })
+        return // skip parallax + scroll-cue + animations
+      }
+
+      // === DESKTOP: pełne cinematic entry ===
       gsap.from('.hero-line', {
         yPercent: 110,
-        duration: isMobile ? 1.0 : 1.4,
-        stagger: isMobile ? 0.08 : 0.12,
+        duration: 1.4,
+        stagger: 0.12,
         ease: 'expo.out',
-        delay: isMobile ? 0.1 : 0.4,
+        delay: 0.4,
       })
 
       gsap.from('.hero-meta', {
         opacity: 0,
         y: 8,
-        duration: isMobile ? 0.7 : 1,
+        duration: 1,
         stagger: 0.06,
         ease: 'power2.out',
-        delay: isMobile ? 0.5 : 1.2,
+        delay: 1.2,
       })
 
-      // Pulsing scroll cue — desktop only (na mobile element jest md:flex, ukryty)
-      if (!isMobile) {
-        gsap.to('.scroll-cue-bar', {
-          scaleY: 1,
-          duration: 1.6,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-          transformOrigin: 'top center',
-        })
-      }
+      gsap.to('.scroll-cue-bar', {
+        scaleY: 1,
+        duration: 1.6,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        transformOrigin: 'top center',
+      })
 
-      // === 3-LAYER PARALLAX — desktop only ===
-      // Na mobile parallax jest jankowy (natywny scroll vs RAF transform),
-      // wyłączamy. Layers zostają statyczne, hero wygląda spokojnie.
-      if (isMobile) return
+      // === 3-LAYER PARALLAX (desktop only) ===
 
       gsap.to('.hero-bg-decoration', {
         yPercent: -28,

@@ -89,6 +89,59 @@ html.lenis body {
   }
 }
 
+/* ────────────────────────────────────────────────────────────────────
+ * MOBILE SAFETY NET — gwarancja widoczności content na mobile
+ *
+ * Wszystkie elementy które są początkowo ukryte przez GSAP from()
+ * (opacity:0, yPercent:N, scaleX:0, clipPath:inset(0 100% 0 0)) muszą
+ * być widoczne na mobile NIEZALEŻNIE od tego czy GSAP się odpalił czy nie.
+ *
+ * Powód: iOS Safari ma race conditions z font loading + GSAP context init
+ * + scrollTrigger. Jeśli animacja nie skompletuje się (np. user scrolluje
+ * za szybko, prefers-reduced-motion aktywne, lub iOS WebKit pominie frame),
+ * elementy z gsap.from() zostają w stanie początkowym → niewidoczne.
+ *
+ * CSS !important przebija inline style (specyfikacja CSS3) i daje
+ * deterministyczny visible state, niezależnie od JS.
+ * ──────────────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* CinematicHero */
+  .hero-line,
+  .hero-meta,
+  /* Manifesto */
+  .manifesto-word,
+  .manifesto-meta,
+  .emergence-line,
+  .emergence-glow,
+  /* SelectedWork */
+  .work-head,
+  .work-card,
+  /* Featured */
+  .featured-line,
+  .featured-stat,
+  .featured-headline,
+  .featured-image,
+  /* NowFeed */
+  .now-row,
+  .now-head-line,
+  /* Contact */
+  .contact-line,
+  .contact-meta,
+  .imprint-row,
+  .wordmark-svg,
+  .section-rule-line,
+  .issue-stamp > span,
+  /* SectionInterstitial */
+  .interstitial-line,
+  .interstitial-glow {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
+  }
+}
+
 /* Custom selection */
 ::selection {
   background: var(--color-accent);
