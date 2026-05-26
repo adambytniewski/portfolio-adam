@@ -2,9 +2,9 @@
   "items": [
     {
       "date": "2026-05-25",
-      "title": "Nowy narzędziowy szkielet do analizy biznesu",
-      "body": "Rozwinięto narzędzie do identyfikacji potencjalnych biznesów z wykorzystaniem algorytmów automatyzujących analizę rynku. Wspiera to proces decyzyjny w budowie produktów.",
-      "tag": "tooling",
+      "title": "Narzędzie do znajdowania biznesów potrzebujących stron — LeadHunter",
+      "body": "Zbudowano narzędzie do automatycznego wyszukiwania lokalnych firm bez obecności w sieci lub z przestarzałymi stronami. System łączy scraping danych z logiką kwalifikacji leadów, generując gotowe listy prospektów dla oferty webowej.",
+      "tag": "automation",
       "auto": true,
       "late": true
     },
