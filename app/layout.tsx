@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { Fraunces, JetBrains_Mono, Space_Grotesk } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import SmoothScroll from '../components/SmoothScroll'
 import MagneticCursor from '../components/UI/MagneticCursor'
 import Preloader from '../components/UI/Preloader'
@@ -26,7 +28,7 @@ export const metadata: Metadata = {
   description:
     'Portfolio Adama Bytniewskiego — cinematic web, automatyzacje n8n, second brain, AI video, foto i muzyka. Aktualizowane na bieżąco z każdą nową realizacją.',
   authors: [{ name: 'Adam Bytniewski' }],
-  metadataBase: new URL('https://adam.example'),
+  metadataBase: new URL('https://redmind.pl'),
   openGraph: {
     title: 'Adam Bytniewski — Buduję rzeczy z AI',
     description:
@@ -50,6 +52,8 @@ export default function RootLayout({
         <Preloader />
         <MagneticCursor />
         <SmoothScroll>{children}</SmoothScroll>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

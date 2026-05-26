@@ -9,10 +9,13 @@
     "lint": "next lint",
     "add": "node scripts/add.mjs",
     "add:now": "node scripts/add.mjs now",
-    "add:work": "node scripts/add.mjs work"
+    "add:work": "node scripts/add.mjs work",
+    "daily-now": "node scripts/daily-now.mjs"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "gsap": "^3.12.5",
     "next": "^15.0.3",
     "react": "^19.0.0",
