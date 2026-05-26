@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Fraunces, JetBrains_Mono, Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -36,6 +36,17 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'pl_PL',
   },
+}
+
+// Mobile-friendly viewport: pełna szerokość urządzenia, brak user-scaling
+// (mamy pinch-zoom przez Lenis-friendly setup), kolor address bara dopasowany
+// do tła, theme-color spinięty z dark scheme.
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5, // zostawiamy zoom dla accessibility
+  themeColor: '#0a0908',
+  colorScheme: 'dark',
 }
 
 export default function RootLayout({

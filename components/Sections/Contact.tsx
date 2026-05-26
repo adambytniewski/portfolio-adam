@@ -142,17 +142,17 @@ export default function Contact() {
     <section
       ref={ref}
       id="contact"
-      className="relative bg-[#0a0908] pt-28 md:pt-40 overflow-hidden text-[#f5f1ea]"
+      className="relative bg-[#0a0908] pt-20 md:pt-40 overflow-hidden text-[#f5f1ea]"
     >
       {/* Registration marks — printer's bleed cues in the four corners */}
-      <RegMark className="left-5 top-5 md:left-8 md:top-8" />
-      <RegMark className="right-5 top-5 md:right-8 md:top-8" />
-      <RegMark className="left-5 bottom-5 md:left-8 md:bottom-8" />
-      <RegMark className="right-5 bottom-5 md:right-8 md:bottom-8" />
+      <RegMark className="left-4 top-4 md:left-8 md:top-8" />
+      <RegMark className="right-4 top-4 md:right-8 md:top-8" />
+      <RegMark className="left-4 bottom-4 md:left-8 md:bottom-8" />
+      <RegMark className="right-4 bottom-4 md:right-8 md:bottom-8" />
 
-      <div className="w-full px-6 md:px-12 lg:px-16">
+      <div className="w-full px-5 md:px-12 lg:px-16">
         {/* === Top issue marker === */}
-        <div className="contact-meta flex flex-wrap items-start justify-between gap-y-3 font-mono text-[10px] uppercase tracking-[0.32em] text-white/40">
+        <div className="contact-meta flex flex-wrap items-start justify-between gap-y-3 font-mono text-[10px] uppercase tracking-[0.26em] text-white/40 md:tracking-[0.32em]">
           <div className="space-y-1">
             <div>Contact · Imprint</div>
             <div>Credits · End matter</div>
@@ -170,7 +170,7 @@ export default function Contact() {
         <SectionRule numeral="I" label="Action" />
 
         {/* === Headline === */}
-        <h2 className="font-display text-[clamp(3rem,13vw,13rem)] font-light leading-[0.92] tracking-tight text-white">
+        <h2 className="font-display text-[clamp(3rem,15vw,13rem)] font-light leading-[0.92] tracking-tight text-white">
           <span className="block overflow-hidden pb-[0.12em]">
             <span className="contact-line inline-block">Działajmy</span>
           </span>
@@ -330,11 +330,13 @@ export default function Contact() {
         {/* Spacer before wordmark */}
         <div className="mt-24 h-px w-full bg-white/10 md:mt-32" />
 
-        {/* === ADAM B. wordmark — natural HTML proportions, no stretching === */}
-        <div className="wordmark mt-12 md:mt-16">
+        {/* === ADAM B. wordmark — auto-skaluje się do szerokości viewportu
+            żeby nie wystawał poza ekran. `clamp` z odpowiednim min (2.5rem)
+            i max (13rem), bez whitespace-nowrap konfliktu z padding-em. */}
+        <div className="wordmark mt-10 md:mt-16">
           <h3
             className="wordmark-svg font-grotesk font-medium uppercase leading-[0.9] tracking-[-0.05em] text-[#f5f1ea]"
-            style={{ fontSize: 'clamp(3.5rem, 14vw, 13rem)' }}
+            style={{ fontSize: 'clamp(2.5rem, 15vw, 13rem)' }}
           >
             <span className="whitespace-nowrap">
               ADAM B<span className="text-[#d4a574]">.</span>
@@ -342,16 +344,16 @@ export default function Contact() {
           </h3>
         </div>
 
-        {/* === End of issue footer === */}
-        <footer className="mt-12 border-t border-white/10 pt-8 pb-10">
-          <div className="grid items-center gap-y-4 font-mono text-[10px] uppercase tracking-[0.28em] text-white/35 md:grid-cols-3">
-            <span>
+        {/* === End of issue footer — na mobile stack pionowy, padding zmniejszony */}
+        <footer className="mt-10 border-t border-white/10 pb-8 pt-6 md:mt-12 md:pb-10 md:pt-8">
+          <div className="grid items-center gap-y-4 font-mono text-[10px] uppercase tracking-[0.24em] text-white/35 md:grid-cols-3 md:tracking-[0.28em]">
+            <span className="leading-relaxed">
               © {today.getFullYear()} {profile.name} · Made in Polska
             </span>
-            <span className="text-center text-[#d4a574]">
+            <span className="text-[#d4a574] md:text-center">
               — End of issue —
             </span>
-            <span className="flex items-center justify-end gap-3 md:justify-end">
+            <span className="flex items-center gap-3 md:justify-end">
               <span className="hidden lg:inline text-white/30">
                 Set in Space&nbsp;Grotesk · Fraunces · JetBrains&nbsp;Mono
               </span>

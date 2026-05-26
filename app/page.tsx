@@ -7,6 +7,8 @@ import NowFeed from '../components/Sections/NowFeed'
 import Contact from '../components/Sections/Contact'
 import ScrollProgress from '../components/UI/ScrollProgress'
 import SectionInterstitial from '../components/UI/SectionInterstitial'
+import Nav from '../components/Nav'
+import { profile } from '../lib/content'
 
 /**
  * Section flow with cinematic transitions:
@@ -29,6 +31,7 @@ export default function Home() {
   return (
     <main className="relative">
       <ScrollProgress />
+      <Nav name={profile.name} />
       <CinematicHero />
       <Manifesto />
       <SectionInterstitial variant="line" />

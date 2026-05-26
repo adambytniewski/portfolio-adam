@@ -116,47 +116,32 @@ export default function CinematicHero() {
     >
       <ShaderBackground />
 
-      {/* MID layer — gigantic decorative type, parallax-shifted slower than fg */}
+      {/* MID layer — gigantic decorative type, parallax-shifted slower than fg.
+          overflow-hidden zapobiega ucinaniu viewportu na wąskim ekranie. */}
       <div
         ref={midRef}
-        className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center"
+        className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center overflow-hidden"
       >
-        <span className="font-display text-[28vw] font-thin italic leading-none text-white/[0.045] select-none">
+        <span className="font-display text-[28vw] font-thin italic leading-none text-white/[0.045] select-none whitespace-nowrap">
           adam.
         </span>
       </div>
 
-      {/* FG layer — content */}
+      {/* FG layer — content. Padding-top większe (pt-24) żeby zostawić miejsce
+          na sticky Nav, który teraz jest globalny w app/page.tsx */}
       <div
         ref={fgRef}
-        className="relative z-30 flex h-full flex-col justify-between p-6 md:p-10 lg:p-14"
+        className="relative z-30 flex h-full flex-col justify-between px-5 pb-6 pt-24 md:px-10 md:pb-10 md:pt-28 lg:px-14"
       >
-        {/* Top nav */}
-        <nav className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.22em] text-white/70">
-          <a href="#top" className="text-white">
-            ADAM B<span className="text-[#d4a574]">.</span>
-          </a>
-          <div className="hidden items-center gap-8 md:flex">
-            <a href="#work" className="hover:text-white transition-colors">Work</a>
-            <a href="#featured" className="hover:text-white transition-colors">Featured</a>
-            <a href="#now" className="hover:text-white transition-colors">Now</a>
-            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
-          </div>
-          <a
-            href={`mailto:${profile.email}`}
-            data-magnetic
-            className="rounded-full border border-white/20 px-4 py-2 text-white transition-colors hover:border-[#d4a574] hover:text-[#d4a574]"
-          >
-            {profile.available ? '● Otwarty na zlecenia' : 'Kontakt'}
-          </a>
-        </nav>
+        {/* Spacer (Nav jest teraz globalny, więc nie ma tu wewnętrznej nawigacji) */}
+        <div aria-hidden />
 
         {/* Hero block */}
         <div className="max-w-6xl">
-          <p className="hero-meta mb-6 font-mono text-[11px] uppercase tracking-[0.32em] text-[#d4a574]">
+          <p className="hero-meta mb-4 font-mono text-[10px] uppercase tracking-[0.28em] text-[#d4a574] md:mb-6 md:text-[11px] md:tracking-[0.32em]">
             — Portfolio · Est. 2026 · {profile.location}
           </p>
-          <h1 className="font-display text-[clamp(3.2rem,12vw,12rem)] font-light leading-[0.95] tracking-tight text-white">
+          <h1 className="font-display text-[clamp(2.8rem,11vw,12rem)] font-light leading-[0.95] tracking-tight text-white">
             {profile.tagline_lines.map((line, i) => (
               <span
                 key={i}
@@ -168,13 +153,13 @@ export default function CinematicHero() {
               </span>
             ))}
           </h1>
-          <p className="hero-meta mt-8 max-w-xl font-mono text-sm leading-relaxed text-white/60">
+          <p className="hero-meta mt-6 max-w-xl font-mono text-[13px] leading-relaxed text-white/60 md:mt-8 md:text-sm">
             {profile.intro}
           </p>
         </div>
 
-        {/* Footer row */}
-        <div className="grid grid-cols-2 items-end gap-6 font-mono text-[11px] uppercase tracking-[0.2em] text-white/50 md:grid-cols-4">
+        {/* Footer row — uproszczone na mobile, pełne na desktop */}
+        <div className="grid grid-cols-2 items-end gap-4 font-mono text-[10px] uppercase tracking-[0.18em] text-white/50 md:grid-cols-4 md:gap-6 md:text-[11px] md:tracking-[0.2em]">
           <div className="hero-meta">
             <span className="block text-white/30">N° 001 / 2026</span>
             <span>Portfolio</span>
@@ -187,7 +172,8 @@ export default function CinematicHero() {
             <span className="block text-white/30">Stack</span>
             <span>Three · GSAP · Lenis</span>
           </div>
-          <div className="hero-meta flex items-end justify-end gap-3">
+          {/* Scroll cue — ukryte na mobile (mało użyteczne, ciasno) */}
+          <div className="hero-meta hidden items-end justify-end gap-3 md:flex">
             <span className="text-right">
               <span className="block text-white/30">Scroll</span>
               <span>↓ Selected work</span>

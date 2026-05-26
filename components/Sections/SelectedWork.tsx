@@ -84,43 +84,45 @@ export default function SelectedWork() {
     <section
       ref={sectionRef}
       id="work"
-      className="relative bg-[#0a0908] py-32 md:py-44 overflow-hidden"
+      className="relative bg-[#0a0908] py-24 md:py-44 overflow-hidden"
     >
-      <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
-        <div className="work-head mb-6 flex items-baseline justify-between font-mono text-[11px] uppercase tracking-[0.32em] text-white/40">
+      <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-14">
+        <div className="work-head mb-6 flex items-baseline justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-white/40 md:text-[11px] md:tracking-[0.32em]">
           <span>N° 004 — Selected Work</span>
           <span className="hidden md:inline">{items.length} pozycji</span>
         </div>
 
-        <h2 className="work-head font-display text-[clamp(2.2rem,6vw,5.5rem)] font-light leading-[0.95] tracking-tight text-white">
+        <h2 className="work-head font-display text-[clamp(2.2rem,8vw,5.5rem)] font-light leading-[0.95] tracking-tight text-white">
           Co <span className="italic text-[#d4a574]">zbudowałem</span>
           <br />
           do tej pory.
         </h2>
 
-        {/* Filter bar */}
-        <div className="work-head mt-12 flex flex-wrap gap-2 border-t border-white/10 pt-8">
-          {FILTERS.map((f) => {
-            const active = filter === f.id
-            return (
-              <button
-                key={f.id}
-                onClick={() => setFilter(f.id)}
-                data-magnetic
-                className={`rounded-full border px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-all ${
-                  active
-                    ? 'border-[#d4a574] bg-[#d4a574] text-[#0a0908]'
-                    : 'border-white/15 text-white/65 hover:border-white/45 hover:text-white'
-                }`}
-              >
-                {f.label}
-              </button>
-            )
-          })}
+        {/* Filter bar — na mobile scrollowalny horyzontalnie, żeby nie owijał się brzydko */}
+        <div className="work-head mt-10 -mx-5 overflow-x-auto border-t border-white/10 px-5 pt-8 md:mx-0 md:mt-12 md:overflow-visible md:px-0">
+          <div className="flex w-max gap-2 md:w-auto md:flex-wrap">
+            {FILTERS.map((f) => {
+              const active = filter === f.id
+              return (
+                <button
+                  key={f.id}
+                  onClick={() => setFilter(f.id)}
+                  data-magnetic
+                  className={`shrink-0 rounded-full border px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-all ${
+                    active
+                      ? 'border-[#d4a574] bg-[#d4a574] text-[#0a0908]'
+                      : 'border-white/15 text-white/65 hover:border-white/45 hover:text-white'
+                  }`}
+                >
+                  {f.label}
+                </button>
+              )
+            })}
+          </div>
         </div>
 
         {/* Grid */}
-        <div className="work-grid mt-12 grid grid-cols-1 gap-6 md:grid-cols-6">
+        <div className="work-grid mt-10 grid grid-cols-1 gap-5 md:mt-12 md:grid-cols-6 md:gap-6">
           {items.map((item, i) => (
             <WorkCard key={item.id} item={item} index={i} />
           ))}
@@ -156,6 +158,10 @@ function WorkCard({ item, index }: { item: WorkItem; index: number }) {
     const el = ref.current
     const img = imgRef.current
     if (!el || !img) return
+    // Skip mousemove parallax on touch devices — listener nigdy by się nie odpalił
+    // i mutation-observer-y mogłyby niepotrzebnie obciążać
+    if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) return
+
     const onMove = (e: MouseEvent) => {
       const rect = el.getBoundingClientRect()
       const cx = (e.clientX - rect.left) / rect.width - 0.5
@@ -224,8 +230,9 @@ function WorkCard({ item, index }: { item: WorkItem; index: number }) {
             {item.subtitle}
           </p>
 
-          {/* Tags reveal on hover */}
-          <div className="mt-3 max-h-0 overflow-hidden opacity-0 transition-all duration-500 group-hover:max-h-32 group-hover:opacity-100">
+          {/* Tags i opis — na touch device (mobile) widoczne domyślnie,
+              na desktop ujawniane przy hoverze (oszczędność miejsca w gridzie) */}
+          <div className="mt-3 max-h-32 overflow-hidden opacity-100 transition-all duration-500 md:max-h-0 md:opacity-0 md:group-hover:max-h-32 md:group-hover:opacity-100">
             <p className="font-mono text-[11px] leading-relaxed text-white/60">
               {item.description}
             </p>
@@ -242,9 +249,16 @@ function WorkCard({ item, index }: { item: WorkItem; index: number }) {
           </div>
         </div>
 
-        {/* Arrow indicator */}
-        <span className="absolute right-5 top-1/2 -translate-y-1/2 translate-x-6 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100">
+        {/* Arrow indicator — tylko desktop hover (na mobile cała karta jest tappable) */}
+        <span className="absolute right-5 top-1/2 hidden -translate-y-1/2 translate-x-6 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100 md:block">
           <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#d4a574] font-mono text-lg text-[#0a0908]">
+            ↗
+          </span>
+        </span>
+
+        {/* Mobile arrow indicator — zawsze widoczna w lewym dolnym rogu */}
+        <span className="absolute right-4 top-4 md:hidden">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-black/30 font-mono text-xs text-white/85 backdrop-blur">
             ↗
           </span>
         </span>

@@ -47,10 +47,14 @@ export default function NowFeed() {
         })
       }
 
-      // Alternating-direction row entries
+      // Alternating-direction row entries.
+      // Na mobile zmniejszamy offset do ±32px żeby nie wystawały poza viewport
+      // w trakcie animacji (overflow-x: hidden jest backupem, ale to czyściej).
+      const isMobile = window.matchMedia('(max-width: 767px)').matches
+      const baseOffset = isMobile ? 32 : 120
       const rows = gsap.utils.toArray<HTMLElement>('.now-row')
       rows.forEach((row, i) => {
-        const fromX = i % 2 === 0 ? -120 : 120
+        const fromX = i % 2 === 0 ? -baseOffset : baseOffset
         gsap.from(row, {
           x: fromX,
           opacity: 0,
@@ -105,7 +109,7 @@ export default function NowFeed() {
 
       <section
         id="now"
-        className="relative bg-[#0a0908] py-32 md:py-44 overflow-hidden"
+        className="relative bg-[#0a0908] py-24 md:py-44 overflow-hidden"
       >
         {/* Subtle warm horizon glow at top — vestige of Featured light */}
         <div
@@ -117,16 +121,17 @@ export default function NowFeed() {
           }}
         />
 
-        <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
-          <div className="mb-10 flex items-baseline justify-between font-mono text-[11px] uppercase tracking-[0.32em] text-white/40">
+        <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-14">
+          <div className="mb-8 flex items-baseline justify-between gap-4 font-mono text-[10px] uppercase tracking-[0.28em] text-white/40 md:mb-10 md:text-[11px] md:tracking-[0.32em]">
             <span>N° 006 — Now</span>
-            <span className="flex items-center gap-2 text-[#d4a574]">
+            <span className="flex items-center gap-2 text-right text-[#d4a574]">
               <span className="live-dot inline-block h-1.5 w-1.5 rounded-full bg-[#d4a574]" />
-              Aktualizowane na żywo
+              <span className="hidden sm:inline">Aktualizowane na żywo</span>
+              <span className="sm:hidden">Na żywo</span>
             </span>
           </div>
 
-          <h2 className="font-display text-[clamp(2.2rem,7vw,6rem)] font-light leading-[0.95] tracking-tight text-white">
+          <h2 className="font-display text-[clamp(2.4rem,9vw,6rem)] font-light leading-[0.95] tracking-tight text-white">
             <span className="block overflow-hidden pb-[0.12em]">
               <span className="now-head-line inline-block">Aktualne</span>
             </span>
@@ -135,16 +140,16 @@ export default function NowFeed() {
             </span>
           </h2>
 
-          <p className="mt-6 max-w-xl font-mono text-sm leading-relaxed text-white/55">
+          <p className="mt-5 max-w-xl font-mono text-[13px] leading-relaxed text-white/55 md:mt-6 md:text-sm">
             Dziennik prac aktualizowany regularnie — najnowsze projekty,
             wdrożenia i odkrycia ze stacku AI, narzędzi i frameworków, których
             używam na co dzień.
           </p>
 
           {latest && (
-            <div className="now-row mt-16 grid gap-6 rounded-md border border-[#d4a574]/30 bg-[#d4a574]/5 p-8 md:grid-cols-12">
+            <div className="now-row mt-12 grid gap-5 rounded-md border border-[#d4a574]/30 bg-[#d4a574]/5 p-6 md:mt-16 md:grid-cols-12 md:gap-6 md:p-8">
               <div className="md:col-span-3">
-                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-[#d4a574]">
+                <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#d4a574] md:tracking-[0.32em]">
                   ★ Najnowsze · {latest.tag}
                 </p>
                 <p className="mt-2 font-mono text-xs text-white/55">
@@ -152,10 +157,10 @@ export default function NowFeed() {
                 </p>
               </div>
               <div className="md:col-span-9">
-                <h3 className="font-display text-2xl font-light leading-tight text-white md:text-3xl">
+                <h3 className="font-display text-xl font-light leading-tight text-white md:text-3xl">
                   {latest.title}
                 </h3>
-                <p className="mt-3 font-mono text-sm leading-relaxed text-white/65">
+                <p className="mt-3 font-mono text-[13px] leading-relaxed text-white/65 md:text-sm">
                   {latest.body}
                 </p>
               </div>
@@ -166,20 +171,24 @@ export default function NowFeed() {
             {now.slice(1).map((it, i) => (
               <li
                 key={i}
-                className="now-row group grid gap-4 py-7 transition-colors md:grid-cols-12 md:gap-6 hover:bg-white/[0.02]"
+                className="now-row group grid gap-3 py-6 transition-colors md:grid-cols-12 md:gap-6 md:py-7 hover:bg-white/[0.02]"
               >
-                <div className="md:col-span-2">
+                {/* Na mobile: data + tag w jednej linii (oszczędność miejsca pionowo) */}
+                <div className="flex items-center gap-3 md:col-span-2 md:block">
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
                     {formatDatePL(it.date)}
                   </p>
+                  <span className="rounded-full border border-white/15 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/55 transition-colors group-hover:border-[#d4a574]/50 group-hover:text-[#d4a574] md:hidden">
+                    {it.tag}
+                  </span>
                 </div>
-                <div className="md:col-span-2">
-                  <span className="rounded-full border border-white/15 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/55 group-hover:border-[#d4a574]/50 group-hover:text-[#d4a574] transition-colors">
+                <div className="hidden md:col-span-2 md:block">
+                  <span className="rounded-full border border-white/15 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/55 transition-colors group-hover:border-[#d4a574]/50 group-hover:text-[#d4a574]">
                     {it.tag}
                   </span>
                 </div>
                 <div className="md:col-span-8">
-                  <h4 className="font-display text-xl font-light leading-tight text-white md:text-2xl">
+                  <h4 className="font-display text-lg font-light leading-tight text-white md:text-2xl">
                     {it.title}
                   </h4>
                   <p className="mt-2 font-mono text-[13px] leading-relaxed text-white/55">
@@ -190,7 +199,7 @@ export default function NowFeed() {
             ))}
           </ul>
 
-          <p className="mt-12 font-mono text-[11px] uppercase tracking-[0.22em] text-white/35">
+          <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.22em] text-white/35 md:mt-12 md:text-[11px]">
             → Sekcja aktualizowana regularnie z każdym kolejnym projektem.
           </p>
         </div>

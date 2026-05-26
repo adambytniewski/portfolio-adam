@@ -97,7 +97,7 @@ export default function Manifesto() {
     <section
       ref={ref}
       id="manifesto"
-      className="relative bg-[#0a0908] py-32 md:py-56 overflow-hidden"
+      className="relative bg-[#0a0908] py-24 md:py-56 overflow-hidden"
     >
       {/* HORIZON EMERGENCE — glowing line bursting open from punch-through */}
       <div
@@ -121,13 +121,13 @@ export default function Manifesto() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
-        <div className="manifesto-meta mb-16 flex items-baseline justify-between font-mono text-[11px] uppercase tracking-[0.32em] text-white/40">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-10 lg:px-14">
+        <div className="manifesto-meta mb-10 flex items-baseline justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-white/40 md:mb-16 md:text-[11px] md:tracking-[0.32em]">
           <span>N° 002 — Manifesto</span>
           <span className="hidden md:inline">— co tu znajdziesz</span>
         </div>
 
-        <p className="font-display text-[clamp(2rem,5.6vw,5rem)] font-light leading-[1.05] tracking-tight text-white">
+        <p className="font-display text-[clamp(1.75rem,7vw,5rem)] font-light leading-[1.12] tracking-tight text-white md:leading-[1.05]">
           {words.map((w, i) => {
             const italics = ['cinematic', 'second', 'brain', 'AI']
             const accent = ['współpracownika,', 'współpracownika', 'AI']
@@ -154,7 +154,7 @@ export default function Manifesto() {
           })}
         </p>
 
-        <div className="manifesto-meta mt-20 grid gap-8 border-t border-white/10 pt-10 font-mono text-xs uppercase tracking-[0.2em] text-white/50 md:grid-cols-4">
+        <div className="manifesto-meta mt-14 grid grid-cols-2 gap-6 border-t border-white/10 pt-8 font-mono text-[11px] uppercase tracking-[0.18em] text-white/50 md:mt-20 md:grid-cols-4 md:gap-8 md:pt-10 md:text-xs md:tracking-[0.2em]">
           <div>
             <span className="block text-white/30">01</span>
             <span>Cinematic web</span>

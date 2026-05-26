@@ -31,52 +31,50 @@ export default function Featured() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // === IRIS BLOOM TRANSITION ===
-      // While pinned for 1 viewport of scroll:
-      // 1. A hot light flare blooms at the top-center of the previous section
-      // 2. The iris (clipped Featured content) grows from circle(0%) → circle(150%)
-      // 3. Once filled, pin releases and section scrolls normally
+      // Na mobile (touch scroll = inertial, niedokładny) clip-path scrub
+      // wygląda nerwowo — pokazujemy zawartość od razu, bez iris animation.
+      const isMobile = window.matchMedia('(max-width: 767px)').matches
+
       const iris = irisRef.current
       const flare = flareRef.current
-      if (iris) {
-        gsap.set(iris, { clipPath: 'circle(0% at 50% 30%)' })
+
+      if (isMobile) {
+        // Mobile: iris od razu otwarte, flare ukryty
+        if (iris) gsap.set(iris, { clipPath: 'circle(160% at 50% 30%)' })
+        if (flare) gsap.set(flare, { opacity: 0 })
+      } else {
+        // Desktop: pełen iris bloom scrub
+        if (iris) gsap.set(iris, { clipPath: 'circle(0% at 50% 30%)' })
+        if (flare) gsap.set(flare, { opacity: 0, scale: 0.3 })
+
+        const irisTl = gsap.timeline({
+          defaults: { duration: 1, ease: 'power2.inOut' },
+          scrollTrigger: {
+            trigger: ref.current,
+            start: 'top bottom',
+            end: 'top top',
+            scrub: 0.9,
+          },
+        })
+
+        irisTl.fromTo(
+          flare,
+          { opacity: 0, scale: 0.4 },
+          { opacity: 1, scale: 1, duration: 0.35, ease: 'power1.out' },
+          0,
+        )
+        irisTl.fromTo(
+          iris,
+          { clipPath: 'circle(0% at 50% 30%)' },
+          { clipPath: 'circle(160% at 50% 30%)', duration: 0.7 },
+          0.25,
+        )
+        irisTl.to(
+          flare,
+          { opacity: 0, ease: 'power1.in', duration: 0.2 },
+          0.8,
+        )
       }
-      if (flare) {
-        gsap.set(flare, { opacity: 0, scale: 0.3 })
-      }
-
-      const irisTl = gsap.timeline({
-        defaults: { duration: 1, ease: 'power2.inOut' },
-        scrollTrigger: {
-          trigger: ref.current,
-          start: 'top bottom',
-          end: 'top top',
-          scrub: 0.9,
-        },
-      })
-
-      // Phase 1: hot pinpoint of light fades in (premonition) — first 30%
-      irisTl.fromTo(
-        flare,
-        { opacity: 0, scale: 0.4 },
-        { opacity: 1, scale: 1, duration: 0.35, ease: 'power1.out' },
-        0,
-      )
-
-      // Phase 2: iris opens — spans 25%–95% of timeline (the main event,
-      // synced so it finishes RIGHT as the section arrives at viewport top)
-      irisTl.fromTo(
-        iris,
-        { clipPath: 'circle(0% at 50% 30%)' },
-        { clipPath: 'circle(160% at 50% 30%)', duration: 0.7 },
-        0.25,
-      )
-
-      // Phase 3: flare fades out as iris completes (light absorbed by section)
-      irisTl.to(
-        flare,
-        { opacity: 0, ease: 'power1.in', duration: 0.2 },
-        0.8,
-      )
 
       // === Inner content animations (after iris opens) ===
       gsap.to('.featured-image', {
@@ -153,23 +151,23 @@ export default function Featured() {
       <section
         ref={wrapRef}
         id="featured"
-        className="relative bg-[#f5f1ea] py-32 md:py-48 overflow-hidden text-stone-900"
+        className="relative bg-[#f5f1ea] py-24 md:py-48 overflow-hidden text-stone-900"
       >
         <div
           ref={irisRef}
           className="relative"
           style={{ clipPath: 'circle(0% at 50% 30%)' }}
         >
-          <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
-            <div className="mb-10 flex items-baseline justify-between font-mono text-[11px] uppercase tracking-[0.32em] text-stone-500">
-              <span>N° 005 — Featured Project</span>
+          <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-14">
+            <div className="mb-8 flex items-baseline justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-stone-500 md:mb-10 md:text-[11px] md:tracking-[0.32em]">
+              <span>N° 005 — Featured</span>
               <span className="hidden md:inline">
                 {CATEGORY_LABEL[item.category]} · {formatDatePL(item.date)}
               </span>
             </div>
 
             <h2
-              className="featured-headline font-display text-[clamp(2.4rem,8vw,7rem)] font-light leading-[0.95] tracking-tight"
+              className="featured-headline font-display text-[clamp(2.6rem,10vw,7rem)] font-light leading-[0.95] tracking-tight"
               style={{ clipPath: 'inset(0 100% 0 0)' }}
             >
               {item.title.split(' ')[0]}{' '}
@@ -177,11 +175,11 @@ export default function Featured() {
                 {item.title.split(' ').slice(1).join(' ') || '·'}
               </span>
             </h2>
-            <p className="mt-4 font-mono text-sm uppercase tracking-[0.2em] text-stone-500">
+            <p className="mt-3 font-mono text-[13px] uppercase tracking-[0.18em] text-stone-500 md:mt-4 md:text-sm md:tracking-[0.2em]">
               {item.subtitle}
             </p>
 
-            <div className="mt-20 grid gap-12 md:grid-cols-12 md:gap-16">
+            <div className="mt-14 grid gap-10 md:mt-20 md:grid-cols-12 md:gap-16">
               {/* Image */}
               <div className="md:col-span-7">
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-stone-300">

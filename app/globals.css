@@ -12,12 +12,30 @@
 html {
   background: var(--color-bg);
   color-scheme: dark;
+  /* Mobile: zapobiega horizontal scroll od GSAP animacji (x: ±N, parallax) */
+  overflow-x: hidden;
+  /* iOS Safari nie skaluje fontów przy rotacji */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   background: var(--color-bg);
   color: var(--color-fg);
   overscroll-behavior: none;
+  /* Drugie zabezpieczenie — niektóre overflow-x sięgają tylko body */
+  overflow-x: hidden;
+  /* Wygładza tap na mobile — bez niebieskiego flash */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Wszystkie interaktywne elementy mają większe touch targets na mobile */
+@media (pointer: coarse) {
+  button,
+  a,
+  [role='button'] {
+    -webkit-tap-highlight-color: rgba(212, 165, 116, 0.15);
+  }
 }
 
 /* Hide native cursor on desktop — replaced by MagneticCursor */
