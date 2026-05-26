@@ -25,11 +25,32 @@ export default function NowFeed() {
   const bladeRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
     const ctx = gsap.context(() => {
-      // === DARK BLADE SWEEP ===
-      // The blade lives ABOVE the section in normal flow. As we scroll
-      // toward Now, the blade's clip-path skews from bottom-right corner
-      // covering 0% → 100% of viewport diagonally.
+      // === MOBILE: pokaż wszystko od razu, tylko loop animacje ===
+      if (isMobile) {
+        // Blade rozłożona — od razu pokrywa cały viewport
+        const blade = bladeRef.current
+        if (blade) {
+          gsap.set(blade, {
+            clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          })
+        }
+        // Wszystkie wpisy widoczne (bez slide-in)
+        gsap.set('.now-row', { opacity: 1, x: 0 })
+        gsap.set('.now-head-line', { opacity: 1, yPercent: 0 })
+        // Loop animacja kropki — zostaje
+        gsap.to('.live-dot', {
+          opacity: 0.3,
+          repeat: -1,
+          yoyo: true,
+          duration: 1.2,
+          ease: 'sine.inOut',
+        })
+        return
+      }
+
+      // === DESKTOP: pełne cinematic transitions ===
       const blade = bladeRef.current
       if (blade) {
         gsap.set(blade, {
@@ -47,14 +68,9 @@ export default function NowFeed() {
         })
       }
 
-      // Alternating-direction row entries.
-      // Na mobile zmniejszamy offset do ±32px żeby nie wystawały poza viewport
-      // w trakcie animacji (overflow-x: hidden jest backupem, ale to czyściej).
-      const isMobile = window.matchMedia('(max-width: 767px)').matches
-      const baseOffset = isMobile ? 32 : 120
       const rows = gsap.utils.toArray<HTMLElement>('.now-row')
       rows.forEach((row, i) => {
-        const fromX = i % 2 === 0 ? -baseOffset : baseOffset
+        const fromX = i % 2 === 0 ? -120 : 120
         gsap.from(row, {
           x: fromX,
           opacity: 0,
@@ -79,7 +95,6 @@ export default function NowFeed() {
         },
       })
 
-      // Pulsing live dot
       gsap.to('.live-dot', {
         opacity: 0.3,
         repeat: -1,

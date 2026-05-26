@@ -31,7 +31,15 @@ export default function SelectedWork() {
   )
 
   useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
     const ctx = gsap.context(() => {
+      if (isMobile) {
+        // Mobile: pokaż wszystko od razu, bez animacji wejścia
+        gsap.set('.work-head', { opacity: 1, y: 0 })
+        gsap.set('.work-card', { opacity: 1, y: 0, rotateX: 0, scale: 1 })
+        return
+      }
+
       gsap.from('.work-head', {
         opacity: 0,
         y: 24,
@@ -43,8 +51,7 @@ export default function SelectedWork() {
           start: 'top 80%',
         },
       })
-      // 3D-perspective entry — cards rise + rotateX in a stagger,
-      // then settle. The grid container has perspective set via Tailwind/style.
+      // 3D-perspective entry — cards rise + rotateX in a stagger
       gsap.from('.work-card', {
         opacity: 0,
         y: 90,
@@ -64,8 +71,14 @@ export default function SelectedWork() {
     return () => ctx.revert()
   }, [])
 
-  // Re-stagger animation when filter changes
+  // Re-stagger animation when filter changes — na mobile tylko proste przejście
   useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
+    if (isMobile) {
+      // Krótki fade-in zamiast staggered, żeby content od razu się pojawił
+      gsap.fromTo('.work-card', { opacity: 0.5 }, { opacity: 1, duration: 0.3, overwrite: 'auto' })
+      return
+    }
     gsap.fromTo(
       '.work-card',
       { opacity: 0, y: 24 },

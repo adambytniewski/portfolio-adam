@@ -24,38 +24,45 @@ export default function CinematicHero() {
   const clockRef = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
     const ctx = gsap.context(() => {
       // === HERO ENTRY ANIMATION (one-time, on load) ===
+      // Te animacje są load-time (nie scroll), więc działają na mobile.
+      // Tylko skracamy delay żeby content szybciej był widoczny.
       gsap.from('.hero-line', {
         yPercent: 110,
-        duration: 1.4,
-        stagger: 0.12,
+        duration: isMobile ? 1.0 : 1.4,
+        stagger: isMobile ? 0.08 : 0.12,
         ease: 'expo.out',
-        delay: 0.4,
+        delay: isMobile ? 0.1 : 0.4,
       })
 
       gsap.from('.hero-meta', {
         opacity: 0,
         y: 8,
-        duration: 1,
+        duration: isMobile ? 0.7 : 1,
         stagger: 0.06,
         ease: 'power2.out',
-        delay: 1.2,
+        delay: isMobile ? 0.5 : 1.2,
       })
 
-      // Pulsing scroll cue
-      gsap.to('.scroll-cue-bar', {
-        scaleY: 1,
-        duration: 1.6,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        transformOrigin: 'top center',
-      })
+      // Pulsing scroll cue — desktop only (na mobile element jest md:flex, ukryty)
+      if (!isMobile) {
+        gsap.to('.scroll-cue-bar', {
+          scaleY: 1,
+          duration: 1.6,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          transformOrigin: 'top center',
+        })
+      }
 
-      // === 3-LAYER PARALLAX (closer = slower) ===
-      // Background canvas/decoration drifts most, mid type a bit less,
-      // foreground content barely moves. Gives editorial depth on scroll.
+      // === 3-LAYER PARALLAX — desktop only ===
+      // Na mobile parallax jest jankowy (natywny scroll vs RAF transform),
+      // wyłączamy. Layers zostają statyczne, hero wygląda spokojnie.
+      if (isMobile) return
+
       gsap.to('.hero-bg-decoration', {
         yPercent: -28,
         ease: 'none',

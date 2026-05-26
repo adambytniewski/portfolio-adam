@@ -76,52 +76,60 @@ export default function Featured() {
         )
       }
 
-      // === Inner content animations (after iris opens) ===
-      gsap.to('.featured-image', {
-        yPercent: -18,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: ref.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        },
-      })
+      // === Inner content animations ===
+      if (isMobile) {
+        // Mobile: wszystko widoczne od razu
+        gsap.set('.featured-headline', { clipPath: 'inset(0 0% 0 0)' })
+        gsap.set('.featured-stat', { opacity: 1, y: 0 })
+        gsap.set('.featured-line', { opacity: 1, yPercent: 0 })
+        gsap.set('.featured-image', { yPercent: 0 })
+      } else {
+        gsap.to('.featured-image', {
+          yPercent: -18,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: ref.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true,
+          },
+        })
 
-      gsap.to('.featured-headline', {
-        clipPath: 'inset(0 0% 0 0)',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.featured-headline',
-          start: 'top 80%',
-          end: 'top 25%',
-          scrub: 1,
-        },
-      })
+        gsap.to('.featured-headline', {
+          clipPath: 'inset(0 0% 0 0)',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.featured-headline',
+            start: 'top 80%',
+            end: 'top 25%',
+            scrub: 1,
+          },
+        })
 
-      gsap.from('.featured-stat', {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: 'expo.out',
-        scrollTrigger: {
-          trigger: '.featured-stats',
-          start: 'top 80%',
-        },
-      })
+        gsap.from('.featured-stat', {
+          y: 30,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: '.featured-stats',
+            start: 'top 80%',
+          },
+        })
 
-      gsap.from('.featured-line', {
-        yPercent: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.08,
-        ease: 'expo.out',
-        scrollTrigger: {
-          trigger: '.featured-copy',
-          start: 'top 75%',
-        },
-      })
+        gsap.from('.featured-line', {
+          yPercent: 100,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.08,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: '.featured-copy',
+            start: 'top 75%',
+          },
+        })
+      }
     }, ref)
     return () => ctx.revert()
   }, [])

@@ -21,10 +21,20 @@ export default function Manifesto() {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
     const ctx = gsap.context(() => {
+      // Na mobile pokazujemy content od razu (bez scroll-triggered reveal),
+      // bo Lenis jest wyłączony i triggery często się nie odpalają przez
+      // konflikt z natywnym touch scrollem. Cinematic animacje zostają na desktop.
+      if (isMobile) {
+        gsap.set('.emergence-line', { scaleX: 1, opacity: 1 })
+        gsap.set('.emergence-glow', { opacity: 1, scaleX: 1.3 })
+        gsap.set('.manifesto-word', { opacity: 1, filter: 'blur(0px)' })
+        gsap.set('.manifesto-meta', { opacity: 1, y: 0 })
+        return
+      }
+
       // === EMERGENCE: horizon line bursts open ===
-      // Triggers when Manifesto enters viewport — the warm horizon line
-      // and halo glow expand as user scrolls into the section.
       gsap.fromTo(
         '.emergence-line',
         { scaleX: 0, opacity: 0 },

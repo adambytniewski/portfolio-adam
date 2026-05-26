@@ -17,6 +17,20 @@ if (typeof window !== 'undefined') {
  */
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    // WAŻNE: Na touch device (telefony, tablety) Lenis często powoduje jank,
+    // bo konkuruje z natywnym inertial scroll iOS/Android. Natywny scroll na mobile
+    // jest już płynny i hardware-accelerated. Lenis jest stworzony dla desktop
+    // mouse wheel.
+    const isTouch = window.matchMedia('(pointer: coarse)').matches
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (isTouch || isMobile || reducedMotion) {
+      // Mobile/touch — używamy natywnego scrolla, dajemy ScrollTriggerowi
+      // pracować bezpośrednio bez proxy Lenisa.
+      return
+    }
+
     const lenis = new Lenis({
       lerp: 0.1,
       smoothWheel: true,
@@ -30,12 +44,6 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       lenis.raf(time * 1000)
     })
     gsap.ticker.lagSmoothing(0)
-
-    // Respect reduced motion
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (mq.matches) {
-      lenis.destroy()
-    }
 
     return () => {
       lenis.destroy()

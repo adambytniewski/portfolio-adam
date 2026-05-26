@@ -27,7 +27,16 @@ export default function SectionInterstitial({
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
     const ctx = gsap.context(() => {
+      if (isMobile) {
+        // Mobile: linie i glow widoczne od razu, bez scrub-scrolla.
+        // Ograniczamy scaleX glow do 1 (zamiast 1.4) żeby nie wystawał poza viewport.
+        gsap.set('.interstitial-line', { scaleX: 1, opacity: 1 })
+        gsap.set('.interstitial-glow', { scaleX: 1, opacity: 1 })
+        return
+      }
+
       const lines = gsap.utils.toArray<HTMLElement>('.interstitial-line')
       lines.forEach((line, i) => {
         gsap.fromTo(

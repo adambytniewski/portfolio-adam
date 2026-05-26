@@ -46,7 +46,38 @@ export default function Contact() {
   ).padStart(4, '0')
 
   useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
     const ctx = gsap.context(() => {
+      if (isMobile) {
+        // Mobile: pokaż wszystko od razu, tylko loop animacje (dot, wordmark float)
+        gsap.set('.contact-line', { yPercent: 0, opacity: 1 })
+        gsap.set('.contact-meta', { opacity: 1, y: 0 })
+        gsap.set('.imprint-row', { opacity: 1, y: 0 })
+        gsap.set('.wordmark-svg', { opacity: 1, yPercent: 0 })
+        gsap.set('.issue-stamp > span', { opacity: 1, y: 0 })
+        gsap.set('.section-rule-line', { scaleX: 1 })
+
+        // Loop animations (subtelne, idą cały czas — OK na mobile)
+        gsap.to('.wordmark-svg', {
+          y: -6,
+          duration: 4.5,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+        })
+        gsap.to('.status-dot', {
+          opacity: 0.35,
+          scale: 0.85,
+          duration: 1.2,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          transformOrigin: 'center',
+        })
+        return
+      }
+
+      // === DESKTOP — pełne reveal animations ===
       gsap.from('.contact-line', {
         yPercent: 110,
         duration: 1.4,
@@ -70,7 +101,6 @@ export default function Contact() {
         scrollTrigger: { trigger: '.imprint-grid', start: 'top 85%' },
       })
 
-      // Wordmark slide-up reveal on scroll into view
       gsap.from('.wordmark-svg', {
         yPercent: 25,
         opacity: 0,
@@ -79,7 +109,6 @@ export default function Contact() {
         scrollTrigger: { trigger: '.wordmark', start: 'top 90%' },
       })
 
-      // Wordmark continuous micro-float — subtle breathing motion
       gsap.to('.wordmark-svg', {
         y: -6,
         duration: 4.5,
@@ -88,7 +117,6 @@ export default function Contact() {
         ease: 'sine.inOut',
       })
 
-      // Pulsing status dot
       gsap.to('.status-dot', {
         opacity: 0.35,
         scale: 0.85,
@@ -99,7 +127,6 @@ export default function Contact() {
         transformOrigin: 'center',
       })
 
-      // Subtle reveal on the issue stamp
       gsap.from('.issue-stamp > span', {
         opacity: 0,
         y: -6,
@@ -109,7 +136,6 @@ export default function Contact() {
         scrollTrigger: { trigger: ref.current, start: 'top 80%' },
       })
 
-      // Section rules animate from left to right
       gsap.from('.section-rule-line', {
         scaleX: 0,
         transformOrigin: 'left center',
