@@ -48,7 +48,7 @@ export default function Nav({ name }: { name: string }) {
           <a
             href="#top"
             onClick={handleLinkClick}
-            className="font-mono text-xs uppercase tracking-[0.25em] text-white"
+            className="-my-3 inline-flex items-center py-3 font-mono text-xs uppercase tracking-[0.25em] text-white md:my-0 md:py-0"
           >
             {name.split(' ')[0]}
             <span className="text-accent">.</span>

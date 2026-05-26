@@ -126,7 +126,7 @@ export default function SelectedWork() {
                   key={f.id}
                   onClick={() => setFilter(f.id)}
                   data-magnetic
-                  className={`shrink-0 rounded-full border px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-all ${
+                  className={`shrink-0 rounded-full border px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] transition-all md:py-2 ${
                     active
                       ? 'border-[#d4a574] bg-[#d4a574] text-[#0a0908]'
                       : 'border-white/15 text-white/65 hover:border-white/45 hover:text-white'

@@ -151,6 +151,35 @@ html.lenis body {
   .manifesto-word {
     filter: none !important;
   }
+
+  /* FIX UCINANIA DESCENDERÓW: polskie znaki ę, j, y, ą w italic Fraunces
+     mają descender ~0.25em poniżej baseline. Z leading-[0.95] (line-height
+     < font-size) + małe pb (0.12em) line-box klipuje 8-13px descendera
+     w hero/now/contact h1+h2 spans. Na mobile pozwalamy descenderom
+     wystawać NATURALNIE — animacje wejścia są wyłączone (gsap.set zamiast
+     gsap.from yPercent:110), więc overflow-hidden nie jest już potrzebny. */
+  h1 > span.overflow-hidden,
+  h2 > span.overflow-hidden,
+  h3 > span.overflow-hidden {
+    overflow: visible !important;
+  }
+
+  /* WORD WRAP: długie polskie słowa ("potrzebujących", "Optymalizacja",
+     "Automatyzacja") na Safari mogą być renderowane szerzej niż Chromium
+     przez różny font metrics — ucięcie. Wymuszamy łamanie żeby zawsze
+     zmieściło się w container. */
+  h1, h2, h3, h4, h5, h6, p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  /* TINY TEXT FIX: text-[10px] jest poniżej accessibility minimum (11-12px).
+     Bumpujemy mobile na 11px żeby wciąż czytelne ale zachowuje styl. */
+  .text-\[10px\] {
+    font-size: 11px !important;
+  }
 }
 
 /* Marquee na mobile = krótszy duration żeby skille wyraźnie się ruszały
