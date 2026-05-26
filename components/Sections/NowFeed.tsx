@@ -27,19 +27,38 @@ export default function NowFeed() {
   useEffect(() => {
     const isMobile = window.matchMedia('(max-width: 767px)').matches
     const ctx = gsap.context(() => {
-      // === MOBILE: pokaż wszystko od razu, tylko loop animacje ===
+      // === MOBILE: subtle slide-in, opacity zawsze 1 (CSS safety) ===
       if (isMobile) {
-        // Blade rozłożona — od razu pokrywa cały viewport
+        // Blade rozłożona — od razu (clip-path scrub jest jankowy na touch)
         const blade = bladeRef.current
         if (blade) {
           gsap.set(blade, {
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
           })
         }
-        // Wszystkie wpisy widoczne (bez slide-in)
-        gsap.set('.now-row', { opacity: 1, x: 0 })
-        gsap.set('.now-head-line', { opacity: 1, yPercent: 0 })
-        // Loop animacja kropki — zostaje
+        // Alternating slide-in — mniejszy offset niż desktop (24px vs 120px)
+        const rows = gsap.utils.toArray<HTMLElement>('.now-row')
+        rows.forEach((row, i) => {
+          const fromX = i % 2 === 0 ? -24 : 24
+          gsap.from(row, {
+            x: fromX,
+            duration: 0.6,
+            ease: 'expo.out',
+            scrollTrigger: {
+              trigger: row,
+              start: 'top 95%',
+            },
+          })
+        })
+        // Heading: subtle Y reveal
+        gsap.from('.now-head-line', {
+          y: 20,
+          duration: 0.8,
+          stagger: 0.08,
+          ease: 'expo.out',
+          scrollTrigger: { trigger: ref.current, start: 'top 90%' },
+        })
+        // Loop animacja kropki
         gsap.to('.live-dot', {
           opacity: 0.3,
           repeat: -1,

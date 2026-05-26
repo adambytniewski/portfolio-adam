@@ -49,15 +49,43 @@ export default function Contact() {
     const isMobile = window.matchMedia('(max-width: 767px)').matches
     const ctx = gsap.context(() => {
       if (isMobile) {
-        // Mobile: pokaż wszystko od razu, tylko loop animacje (dot, wordmark float)
-        gsap.set('.contact-line', { yPercent: 0, opacity: 1 })
-        gsap.set('.contact-meta', { opacity: 1, y: 0 })
-        gsap.set('.imprint-row', { opacity: 1, y: 0 })
-        gsap.set('.wordmark-svg', { opacity: 1, yPercent: 0 })
-        gsap.set('.issue-stamp > span', { opacity: 1, y: 0 })
-        gsap.set('.section-rule-line', { scaleX: 1 })
+        // === MOBILE: subtle reveals — Y only, opacity gwarantowany przez CSS ===
+        gsap.from('.contact-line', {
+          yPercent: 60,
+          duration: 0.9,
+          stagger: 0.1,
+          ease: 'expo.out',
+          scrollTrigger: { trigger: ref.current, start: 'top 90%' },
+        })
+        gsap.from('.contact-meta', {
+          y: 12,
+          duration: 0.6,
+          stagger: 0.04,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: ref.current, start: 'top 90%' },
+        })
+        gsap.from('.imprint-row', {
+          y: 20,
+          duration: 0.7,
+          stagger: 0.08,
+          ease: 'expo.out',
+          scrollTrigger: { trigger: '.imprint-grid', start: 'top 95%' },
+        })
+        gsap.from('.wordmark-svg', {
+          y: 30,
+          duration: 1.0,
+          ease: 'expo.out',
+          scrollTrigger: { trigger: '.wordmark', start: 'top 95%' },
+        })
+        gsap.from('.section-rule-line', {
+          scaleX: 0,
+          transformOrigin: 'left center',
+          duration: 0.9,
+          ease: 'expo.out',
+          scrollTrigger: { trigger: ref.current, start: 'top 90%' },
+        })
 
-        // Loop animations (subtelne, idą cały czas — OK na mobile)
+        // Loop animations — bez tych strona wygląda statycznie
         gsap.to('.wordmark-svg', {
           y: -6,
           duration: 4.5,

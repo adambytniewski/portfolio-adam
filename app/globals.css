@@ -90,55 +90,86 @@ html.lenis body {
 }
 
 /* ────────────────────────────────────────────────────────────────────
- * MOBILE SAFETY NET — gwarancja widoczności content na mobile
+ * MOBILE SAFETY NET — gwarancja widoczności content
  *
- * Wszystkie elementy które są początkowo ukryte przez GSAP from()
- * (opacity:0, yPercent:N, scaleX:0, clipPath:inset(0 100% 0 0)) muszą
- * być widoczne na mobile NIEZALEŻNIE od tego czy GSAP się odpalił czy nie.
+ * STRATEGIA: tylko `opacity: 1 !important` jest twardo wymuszone, żeby
+ * elementy NIE BYŁY niewidoczne jeśli GSAP zawiedzie. Transform/x/y mogą
+ * być animowane przez GSAP — element zawsze widoczny opacity:1, animacja
+ * przesuwa go na pozycję. Jeśli scroll-trigger się nie odpali, element jest
+ * lekko offsetowany ale wciąż widoczny (acceptable degradation).
  *
- * Powód: iOS Safari ma race conditions z font loading + GSAP context init
- * + scrollTrigger. Jeśli animacja nie skompletuje się (np. user scrolluje
- * za szybko, prefers-reduced-motion aktywne, lub iOS WebKit pominie frame),
- * elementy z gsap.from() zostają w stanie początkowym → niewidoczne.
+ * Wyjątki:
+ * - .hero-line/.hero-meta — overflow-hidden parent klipuje transform =
+ *   musimy wymusić transform: none, inaczej element schowany pod overflow.
+ * - .featured-headline — inline style clipPath inset(0 100% 0 0) ukrywa
+ *   napis "Second Brain", wymuszamy clip-path: none.
+ * - .manifesto-word — initial filter: blur(4px) z GSAP from() rozmywa,
+ *   wymuszamy filter: none.
  *
- * CSS !important przebija inline style (specyfikacja CSS3) i daje
- * deterministyczny visible state, niezależnie od JS.
+ * CSS !important przebija inline style (CSS3 spec). Deterministyczne.
  * ──────────────────────────────────────────────────────────────────── */
 @media (max-width: 767px) {
-  /* CinematicHero */
+  /* OPACITY SAFETY — wszystkie animated elements zawsze widoczne */
   .hero-line,
   .hero-meta,
-  /* Manifesto */
   .manifesto-word,
   .manifesto-meta,
   .emergence-line,
   .emergence-glow,
-  /* SelectedWork */
   .work-head,
   .work-card,
-  /* Featured */
   .featured-line,
   .featured-stat,
   .featured-headline,
   .featured-image,
-  /* NowFeed */
   .now-row,
   .now-head-line,
-  /* Contact */
   .contact-line,
   .contact-meta,
   .imprint-row,
   .wordmark-svg,
   .section-rule-line,
   .issue-stamp > span,
-  /* SectionInterstitial */
   .interstitial-line,
   .interstitial-glow {
     opacity: 1 !important;
+  }
+
+  /* SPECJALNE: Hero — overflow-hidden parent klipuje transform */
+  .hero-line,
+  .hero-meta {
     transform: none !important;
-    filter: none !important;
+  }
+
+  /* SPECJALNE: Featured headline — inline clip-path ukrywa napis */
+  .featured-headline {
     clip-path: none !important;
     -webkit-clip-path: none !important;
+  }
+
+  /* SPECJALNE: Manifesto words — initial blur ukrywa tekst */
+  .manifesto-word {
+    filter: none !important;
+  }
+}
+
+/* Marquee na mobile = krótszy duration żeby skille wyraźnie się ruszały
+   (oryginalny 50-70s na małym ekranie wygląda statycznie). */
+@media (max-width: 767px) {
+  .marquee-track-fast {
+    animation-duration: 25s !important;
+  }
+  .marquee-track-slow {
+    animation-duration: 35s !important;
+  }
+}
+
+/* Marquee MUSI działać niezależnie od prefers-reduced-motion — to core
+   feature design (idle "tools rolodex"). Bez tego strona wygląda statycznie. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track-fast,
+  .marquee-track-slow {
+    animation-duration: 50s !important;
   }
 }
 

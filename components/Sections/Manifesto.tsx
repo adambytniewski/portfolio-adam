@@ -23,18 +23,35 @@ export default function Manifesto() {
   useEffect(() => {
     const isMobile = window.matchMedia('(max-width: 767px)').matches
     const ctx = gsap.context(() => {
-      // Na mobile pokazujemy content od razu (bez scroll-triggered reveal),
-      // bo Lenis jest wyłączony i triggery często się nie odpalają przez
-      // konflikt z natywnym touch scrollem. Cinematic animacje zostają na desktop.
       if (isMobile) {
-        gsap.set('.emergence-line', { scaleX: 1, opacity: 1 })
-        gsap.set('.emergence-glow', { opacity: 1, scaleX: 1.3 })
-        gsap.set('.manifesto-word', { opacity: 1, filter: 'blur(0px)' })
-        gsap.set('.manifesto-meta', { opacity: 1, y: 0 })
+        // === MOBILE: subtle reveals, opacity zawsze 1 (CSS safety) ===
+        // Emergence line — scaleX reveal (bez scrub, normal animation)
+        gsap.from('.emergence-line', {
+          scaleX: 0,
+          duration: 0.9,
+          ease: 'expo.out',
+          scrollTrigger: { trigger: ref.current, start: 'top 95%' },
+        })
+        // Manifesto words — subtle stagger Y (bez blur, CSS safety wymusi filter:none)
+        gsap.from('.manifesto-word', {
+          y: 12,
+          duration: 0.5,
+          stagger: 0.03,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: ref.current, start: 'top 90%' },
+        })
+        // Meta grid (bullets 01/02/03/04)
+        gsap.from('.manifesto-meta', {
+          y: 16,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: 'expo.out',
+          scrollTrigger: { trigger: ref.current, start: 'top 90%' },
+        })
         return
       }
 
-      // === EMERGENCE: horizon line bursts open ===
+      // === DESKTOP: pełne cinematic scrub reveals ===
       gsap.fromTo(
         '.emergence-line',
         { scaleX: 0, opacity: 0 },
@@ -66,7 +83,6 @@ export default function Manifesto() {
         },
       )
 
-      // === Word-by-word reveal ===
       const words = gsap.utils.toArray<HTMLElement>('.manifesto-word')
       gsap.fromTo(
         words,

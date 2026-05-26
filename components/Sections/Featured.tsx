@@ -78,11 +78,23 @@ export default function Featured() {
 
       // === Inner content animations ===
       if (isMobile) {
-        // Mobile: wszystko widoczne od razu
+        // Mobile: headline od razu otwarty (CSS safety clip-path:none).
+        // Stat i line — subtle Y slide-in, opacity safety przez CSS.
         gsap.set('.featured-headline', { clipPath: 'inset(0 0% 0 0)' })
-        gsap.set('.featured-stat', { opacity: 1, y: 0 })
-        gsap.set('.featured-line', { opacity: 1, yPercent: 0 })
-        gsap.set('.featured-image', { yPercent: 0 })
+        gsap.from('.featured-stat', {
+          y: 24,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: 'expo.out',
+          scrollTrigger: { trigger: '.featured-stats', start: 'top 95%' },
+        })
+        gsap.from('.featured-line', {
+          yPercent: 60,
+          duration: 0.8,
+          stagger: 0.08,
+          ease: 'expo.out',
+          scrollTrigger: { trigger: '.featured-copy', start: 'top 95%' },
+        })
       } else {
         gsap.to('.featured-image', {
           yPercent: -18,

@@ -33,59 +33,64 @@ export default function SelectedWork() {
   useEffect(() => {
     const isMobile = window.matchMedia('(max-width: 767px)').matches
     const ctx = gsap.context(() => {
-      if (isMobile) {
-        // Mobile: pokaż wszystko od razu, bez animacji wejścia
-        gsap.set('.work-head', { opacity: 1, y: 0 })
-        gsap.set('.work-card', { opacity: 1, y: 0, rotateX: 0, scale: 1 })
-        return
-      }
-
+      // === Heading reveal — Y only, opacity safe przez CSS ===
       gsap.from('.work-head', {
-        opacity: 0,
-        y: 24,
-        duration: 1,
+        y: isMobile ? 16 : 24,
+        duration: isMobile ? 0.6 : 1,
         stagger: 0.08,
         ease: 'expo.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
+          start: isMobile ? 'top 95%' : 'top 80%',
         },
       })
-      // 3D-perspective entry — cards rise + rotateX in a stagger
-      gsap.from('.work-card', {
-        opacity: 0,
-        y: 90,
-        rotateX: -22,
-        scale: 0.92,
-        transformPerspective: 1200,
-        transformOrigin: '50% 100%',
-        duration: 1.2,
-        stagger: 0.08,
-        ease: 'expo.out',
-        scrollTrigger: {
-          trigger: '.work-grid',
-          start: 'top 82%',
-        },
-      })
+
+      // === Cards entry ===
+      if (isMobile) {
+        // Mobile: tylko subtle slide-up. NO opacity:0 (CSS safety net wymusi opacity:1)
+        // NO rotateX (3D na mobile janky)
+        gsap.from('.work-card', {
+          y: 40,
+          duration: 0.7,
+          stagger: 0.08,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: '.work-grid',
+            start: 'top 95%',
+          },
+        })
+      } else {
+        // Desktop: pełna 3D-perspective entry
+        gsap.from('.work-card', {
+          opacity: 0,
+          y: 90,
+          rotateX: -22,
+          scale: 0.92,
+          transformPerspective: 1200,
+          transformOrigin: '50% 100%',
+          duration: 1.2,
+          stagger: 0.08,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: '.work-grid',
+            start: 'top 82%',
+          },
+        })
+      }
     }, sectionRef)
     return () => ctx.revert()
   }, [])
 
-  // Re-stagger animation when filter changes — na mobile tylko proste przejście
+  // Re-stagger animation when filter changes
   useEffect(() => {
     const isMobile = window.matchMedia('(max-width: 767px)').matches
-    if (isMobile) {
-      // Krótki fade-in zamiast staggered, żeby content od razu się pojawił
-      gsap.fromTo('.work-card', { opacity: 0.5 }, { opacity: 1, duration: 0.3, overwrite: 'auto' })
-      return
-    }
+    // Y only — opacity:1 zawsze (CSS safety)
     gsap.fromTo(
       '.work-card',
-      { opacity: 0, y: 24 },
+      { y: isMobile ? 12 : 24 },
       {
-        opacity: 1,
         y: 0,
-        duration: 0.6,
+        duration: isMobile ? 0.4 : 0.6,
         stagger: 0.04,
         ease: 'expo.out',
         overwrite: 'auto',

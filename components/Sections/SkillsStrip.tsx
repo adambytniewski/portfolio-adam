@@ -18,9 +18,9 @@ export default function SkillsStrip() {
         <span className="hidden md:inline">— tools I use daily</span>
       </div>
 
-      <Marquee items={row1} duration={50} />
+      <Marquee items={row1} duration={50} speedClass="marquee-track-fast" />
       <div className="h-3" />
-      <Marquee items={row2} duration={70} reverse />
+      <Marquee items={row2} duration={70} reverse speedClass="marquee-track-slow" />
 
       <div className="mt-12 grid gap-y-6 px-5 md:mt-14 md:px-10 lg:px-14 md:grid-cols-5 md:gap-x-6">
         {skills.map((group) => (
@@ -42,10 +42,12 @@ function Marquee({
   items,
   duration,
   reverse = false,
+  speedClass = '',
 }: {
   items: string[]
   duration: number
   reverse?: boolean
+  speedClass?: string
 }) {
   const content = (
     <div className="flex items-center gap-8 px-4 whitespace-nowrap md:gap-12 md:px-6">
@@ -64,7 +66,7 @@ function Marquee({
   return (
     <div className="relative w-full overflow-hidden" aria-hidden>
       <div
-        className="flex w-max"
+        className={`flex w-max ${speedClass}`}
         style={{
           animation: `marquee ${duration}s linear infinite${reverse ? ' reverse' : ''}`,
         }}

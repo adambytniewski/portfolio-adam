@@ -30,10 +30,16 @@ export default function SectionInterstitial({
     const isMobile = window.matchMedia('(max-width: 767px)').matches
     const ctx = gsap.context(() => {
       if (isMobile) {
-        // Mobile: linie i glow widoczne od razu, bez scrub-scrolla.
-        // Ograniczamy scaleX glow do 1 (zamiast 1.4) żeby nie wystawał poza viewport.
-        gsap.set('.interstitial-line', { scaleX: 1, opacity: 1 })
-        gsap.set('.interstitial-glow', { scaleX: 1, opacity: 1 })
+        // Mobile: line scaleX reveal (bez scrub-scroll, normal duration).
+        // Glow zostaje statyczny (scaleX:1, opacity safety).
+        gsap.from('.interstitial-line', {
+          scaleX: 0,
+          duration: 0.8,
+          ease: 'expo.out',
+          stagger: 0.1,
+          scrollTrigger: { trigger: ref.current, start: 'top 95%' },
+        })
+        gsap.set('.interstitial-glow', { scaleX: 1 })
         return
       }
 
