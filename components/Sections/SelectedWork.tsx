@@ -148,8 +148,15 @@ function WorkCard({ item, index }: { item: WorkItem; index: number }) {
           : pattern === 3
             ? 'md:col-span-3'
             : 'md:col-span-2'
+  // Aspect ratio: na mobile WSZYSTKIE karty mają taller 4/5 — content (tytuł,
+  // subtitle, opis, tagi widoczne domyślnie) musi się zmieścić. Asymetryczny
+  // wzorzec 16/10 / 5/4 wraca dopiero od md+ gdzie jest grid wielokolumnowy.
   const aspect =
-    pattern === 0 ? 'aspect-[16/10]' : pattern === 2 ? 'aspect-[5/4]' : 'aspect-[4/5]'
+    pattern === 0
+      ? 'aspect-[4/5] md:aspect-[16/10]'
+      : pattern === 2
+        ? 'aspect-[4/5] md:aspect-[5/4]'
+        : 'aspect-[4/5]'
 
   const ref = useRef<HTMLAnchorElement>(null)
   const imgRef = useRef<HTMLDivElement>(null)

@@ -127,7 +127,10 @@ export default function Featured() {
   }, [])
 
   return (
-    <div ref={ref} className="relative">
+    // overflow-hidden TUTAJ, na wrapperze — żeby gigantyczny pre-iris flare (600px)
+    // nie wystawał z viewportu na mobile (vw=390 < 600). Bez tego strona ma 491px
+    // szerokości na 390px viewport — body scrollWidth puchnie i UI się rozjeżdża.
+    <div ref={ref} className="relative overflow-hidden">
       {/* Pre-iris flare — a hot pinpoint of light that anticipates the bloom.
           Lives in the dark space ABOVE the Featured section. */}
       <div
@@ -138,8 +141,8 @@ export default function Featured() {
           left: '50%',
           top: '0',
           transform: 'translate(-50%, -100%)',
-          width: '600px',
-          height: '600px',
+          width: 'min(600px, 110vw)',
+          height: 'min(600px, 110vw)',
           background:
             'radial-gradient(circle, rgba(255,217,160,0.85) 0%, rgba(212,165,116,0.4) 30%, rgba(212,165,116,0) 70%)',
           mixBlendMode: 'screen',
