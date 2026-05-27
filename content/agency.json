@@ -1,0 +1,168 @@
+{
+  "brand": {
+    "name": "Redmind",
+    "tagline": "Strony które klient pamięta.",
+    "subtitle": "Cinematic Next.js dla polskich firm.",
+    "email": "redmind.mailbox@gmail.com",
+    "location": "Polska · CET",
+    "founded": 2026
+  },
+  "whyUs": [
+    {
+      "n": "01",
+      "title": "Własny kod Next.js — nie szablon",
+      "desc": "Każda linijka pisana ręcznie pod Twoją firmę. Brak WordPressa, brak page-buildera, brak ślepych prefabryk."
+    },
+    {
+      "n": "02",
+      "title": "Lighthouse 100/100/100/100",
+      "desc": "Performance, accessibility, best practices, SEO — wszystko na maksa. Twój klient nie czeka na ładowanie."
+    },
+    {
+      "n": "03",
+      "title": "Cinematic 3D + animacje",
+      "desc": "Three.js, GSAP, ScrollTrigger — efekty które trzymają klienta na stronie 3× dłużej. Premium feel."
+    },
+    {
+      "n": "04",
+      "title": "AI native",
+      "desc": "Chatbot, automatyczne odpowiedzi na maile, generowanie contentu — opcjonalnie wbudowane w stronę."
+    },
+    {
+      "n": "05",
+      "title": "Kod jest Twój",
+      "desc": "Wszystkie source files w Twoim GitHubie. Nie zniknę razem ze stroną. Możesz przejąć kontrolę o każdej chwili."
+    },
+    {
+      "n": "06",
+      "title": "90 dni bugfix gratis",
+      "desc": "Po launchu trzy miesiące poprawek za darmo. Bo dobre strony nie kończą się na zdaniu."
+    }
+  ],
+  "process": [
+    {
+      "n": "I",
+      "title": "Brief",
+      "subtitle": "Discovery",
+      "desc": "30-min call albo formularz. Pytam o branżę, klientów, cele, konkurencję, budżet. Wychodzę z konkretną wyceną i deadlinem.",
+      "duration": "1–2 dni"
+    },
+    {
+      "n": "II",
+      "title": "Design",
+      "subtitle": "Wireframe → Mockup",
+      "desc": "Figma mockupy z prawdziwym contentem (nie lorem ipsum). Iteracja do akceptacji. 2–3 rundy poprawek wliczone.",
+      "duration": "5–10 dni"
+    },
+    {
+      "n": "III",
+      "title": "Code",
+      "subtitle": "Build",
+      "desc": "Next.js + Three.js + GSAP + Tailwind. Każdy element ręcznie wycyzelowany. Performance budget pilnowany od pierwszego commita.",
+      "duration": "10–20 dni"
+    },
+    {
+      "n": "IV",
+      "title": "Launch",
+      "subtitle": "Deploy",
+      "desc": "Vercel + custom domain + SSL + email forwarding. Strona live w Twojej domenie z pełną telemetrią analytics.",
+      "duration": "1 dzień"
+    },
+    {
+      "n": "V",
+      "title": "Grow",
+      "subtitle": "Optimize",
+      "desc": "90 dni darmowych poprawek. Mierze konwersje, optymalizuję performance, dodaje nowe funkcje. Strona żyje, nie umiera po launchu.",
+      "duration": "90 dni + ∞"
+    }
+  ],
+  "pricing": [
+    {
+      "tier": "Start",
+      "tag": "Solidna obecność",
+      "priceFrom": 3000,
+      "priceTo": 6000,
+      "highlight": false,
+      "features": [
+        "Strona one-page lub do 5 sekcji",
+        "Custom design (nie szablon)",
+        "Mobile-first, responsywna",
+        "Lighthouse 95+",
+        "Hosting Vercel — 6 miesięcy gratis",
+        "Domena + SSL + email forwarding",
+        "30 dni bugfix po launchu"
+      ],
+      "cta": "Wycenić Start"
+    },
+    {
+      "tier": "Pro",
+      "tag": "Najczęściej wybierane",
+      "priceFrom": 6000,
+      "priceTo": 15000,
+      "highlight": true,
+      "features": [
+        "Wszystko z paczki Start",
+        "Do 12 podstron + blog/news",
+        "Cinematic animacje (Three.js · GSAP)",
+        "CMS — sam edytujesz teksty",
+        "Formularze + integracje (Sheets, CRM)",
+        "Hosting + utrzymanie — 12 miesięcy",
+        "60 dni bugfix",
+        "Lighthouse 100"
+      ],
+      "cta": "Wycenić Pro"
+    },
+    {
+      "tier": "Premium",
+      "tag": "Pełen stack AI",
+      "priceFrom": 15000,
+      "priceTo": null,
+      "highlight": false,
+      "features": [
+        "Wszystko z paczki Pro",
+        "AI chatbot wbudowany w stronę",
+        "Automatyzacje n8n + Claude API",
+        "Custom 3D scenes (Blender/R3F)",
+        "A/B testing + conversion tracking",
+        "Hosting + utrzymanie — 24 miesiące",
+        "90 dni bugfix + priorytet",
+        "Bezpłatne rozszerzenia do 12mc"
+      ],
+      "cta": "Porozmawiajmy"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Ile to wszystko trwa?",
+      "a": "Start: 2–3 tygodnie. Pro: 3–6 tygodni. Premium: 6–10 tygodni. Czas zależy od ilości iteracji designu i contentu który dostarczasz."
+    },
+    {
+      "q": "Co dokładnie dostaję na koniec?",
+      "a": "Pełen kod źródłowy w Twoim GitHubie, stronę live w Twojej domenie, dostęp do Vercela (hosting), CMS (jeśli w pakiecie), dokumentację 'jak to obsługiwać', email kontaktowy w domenie i analytics."
+    },
+    {
+      "q": "Czy mogę sam edytować teksty po launchu?",
+      "a": "Tak. W pakietach Pro i Premium dostajesz prosty CMS — wpisujesz teksty w panelu jak w Wordzie, strona aktualizuje się sama. W pakiecie Start drobne poprawki robię ja, w cenie 90 dni gratis."
+    },
+    {
+      "q": "Co z domeną i hostingiem?",
+      "a": "Domenę kupuję dla Ciebie u OVH lub Cię łączę z istniejącą. Hosting na Vercelu — najszybszy w Polsce, w cenie pakietu na 6/12/24 miesiące. Po tym okresie ok. 80 zł/miesiąc lub przejmujesz sam."
+    },
+    {
+      "q": "Czy strona będzie szybka?",
+      "a": "Lighthouse Performance 95+ w Start, 100/100/100/100 w Pro i Premium. Każda strona testowana na realnym 4G + iPhone 12 przed launchem. Brak ciężkich page builderów = ładowanie pod sekundę."
+    },
+    {
+      "q": "Skąd mam wiedzieć że nie zniknę?",
+      "a": "Wszystkie source files są w Twoim GitHubie od dnia 1. Jeśli mnie nie ma — bierzesz kod i kontynuujesz z kimkolwiek. Strona jest Twoja, nie moja. Tak działa profesjonalna agencja, a nie freelancer."
+    },
+    {
+      "q": "Czy mogę dostać AI chatbota?",
+      "a": "Tak — w pakiecie Premium wbudowany od razu. W Pro można dodać jako add-on (~3000 zł). Chatbot odpowiada po polsku, używa Twoich tekstów jako bazę wiedzy, działa 24/7."
+    },
+    {
+      "q": "Jak płacę?",
+      "a": "50% na start (kick-off), 50% przed launchem. Pakiet Premium można rozłożyć na 3 raty. Faktura VAT zwykłą lub odwrotne obciążenie dla firm UE."
+    }
+  ]
+}

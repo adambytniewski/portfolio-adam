@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react'
 
 const links = [
-  { href: '#work', label: 'Selected' },
-  { href: '#featured', label: 'Featured' },
-  { href: '#now', label: 'Now' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#why', label: 'Możliwości' },
+  { href: '#process', label: 'Proces' },
+  { href: '#pricing', label: 'Cennik' },
+  { href: '#faq', label: 'FAQ' },
 ]
 
 export default function Nav({ name }: { name: string }) {
@@ -70,14 +70,11 @@ export default function Nav({ name }: { name: string }) {
           {/* Right side: CTA (desktop) + hamburger (mobile) */}
           <div className="flex items-center gap-3">
             <a
-              href="#contact"
+              href="#brief"
               onClick={handleLinkClick}
-              className="group relative hidden overflow-hidden rounded-full border border-white/15 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-white/80 transition-colors duration-300 hover:border-accent hover:text-accent md:inline-block"
+              className="group relative hidden overflow-hidden rounded-full bg-accent px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-[#0a0908] transition-colors duration-300 hover:bg-white md:inline-block"
             >
-              <span className="inline-flex items-center gap-2">
-                <span className="block h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-                Dostępny
-              </span>
+              Wyceń stronę →
             </a>
 
             {/* Hamburger button — visible only on mobile */}
@@ -156,15 +153,14 @@ export default function Nav({ name }: { name: string }) {
           {/* Footer block */}
           <div className="space-y-5 border-t border-white/10 pt-6">
             <a
-              href="#contact"
+              href="#brief"
               onClick={handleLinkClick}
-              className="inline-flex w-full items-center justify-between rounded-full border border-accent/40 bg-accent/5 px-5 py-3 font-mono text-[11px] uppercase tracking-[0.25em] text-accent"
+              className="inline-flex w-full items-center justify-between rounded-full bg-accent px-5 py-3.5 font-mono text-[11px] uppercase tracking-[0.25em] text-[#0a0908]"
             >
               <span className="inline-flex items-center gap-2">
-                <span className="block h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-                Dostępny — napisz
+                Wyceń swoją stronę
               </span>
-              <span>↗</span>
+              <span>→</span>
             </a>
             <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/35">
               Cinematic web · Automation · AI media

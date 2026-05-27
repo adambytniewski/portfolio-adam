@@ -1,32 +1,33 @@
 import CinematicHeroV2 from '../components/Hero/CinematicHeroV2'
-import Manifesto from '../components/Sections/Manifesto'
-import SkillsStrip from '../components/Sections/SkillsStrip'
-import SelectedWork from '../components/Sections/SelectedWork'
-import Featured from '../components/Sections/Featured'
-import NowFeed from '../components/Sections/NowFeed'
+import WhyUs from '../components/Sections/WhyUs'
+import Process from '../components/Sections/Process'
+import Pricing from '../components/Sections/Pricing'
+import Faq from '../components/Sections/Faq'
 import BriefForm from '../components/Sections/BriefForm'
-import Contact from '../components/Sections/Contact'
+import FinalCta from '../components/Sections/FinalCta'
+import Footer from '../components/Sections/Footer'
 import ScrollProgress from '../components/UI/ScrollProgress'
 import SectionInterstitial from '../components/UI/SectionInterstitial'
 import Nav from '../components/Nav'
 import { profile } from '../lib/content'
 
 /**
- * Section flow with cinematic transitions:
+ * REDMIND AGENCY — landing page flow.
  *
- *  Hero (PIN + punch-through)
- *    ↓ camera punches through screen → black flash
- *  Manifesto (emergence — horizon line bursts open)
- *    ↓ subtle warm interstitial line
- *  Skills strip
- *    ↓ subtle warm interstitial line
- *  Selected Work (3D rotation entry on cards)
- *    ↓ ★ Featured iris bloom — light apertures from a hot pinpoint
- *  Featured (cream, light)
- *    ↓ ★ Dark blade — diagonal sweep from bottom-right covers light
- *  Now Feed (alternating L/R row entries)
- *    ↓ subtle warm interstitial line
- *  Contact (text reveal)
+ *  Hero (cinematic 3D portal — premium morphing crystal, scroll-bound morph)
+ *    ↓ subtle horizon line
+ *  Why Us (6 differentiatorów vs WordPress/Wix)
+ *    ↓ subtle horizon line
+ *  Process (5 kroków od briefa do launch — vertical timeline)
+ *    ↓ subtle horizon line
+ *  Pricing (3 paczki Start/Pro/Premium z konkretnymi cenami)
+ *    ↓ subtle horizon line
+ *  FAQ (8 typowych pytań klienta MŚP)
+ *    ↓ subtle horizon line
+ *  Brief Form (4-step lead qualifier)
+ *    ↓ subtle horizon line
+ *  Final CTA ("Zaczniemy?")
+ *  Footer (minimal: wordmark + kontakt + social)
  */
 export default function Home() {
   return (
@@ -34,18 +35,18 @@ export default function Home() {
       <ScrollProgress />
       <Nav name={profile.name} />
       <CinematicHeroV2 />
-      <Manifesto />
       <SectionInterstitial variant="line" />
-      <SkillsStrip />
+      <WhyUs />
       <SectionInterstitial variant="double" />
-      <SelectedWork />
-      {/* Featured + NowFeed have their own dramatic transitions built-in */}
-      <Featured />
-      <NowFeed />
+      <Process />
+      <SectionInterstitial variant="line" />
+      <Pricing />
+      <SectionInterstitial variant="line" />
+      <Faq />
       <SectionInterstitial variant="line" />
       <BriefForm />
-      <SectionInterstitial variant="line" />
-      <Contact />
+      <FinalCta />
+      <Footer />
     </main>
   )
 }
