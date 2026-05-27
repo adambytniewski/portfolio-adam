@@ -1,6 +1,7 @@
 import CinematicHeroV2 from '../components/Hero/CinematicHeroV2'
 import WhyUs from '../components/Sections/WhyUs'
 import Process from '../components/Sections/Process'
+import Showpiece from '../components/Sections/Showpiece'
 import Pricing from '../components/Sections/Pricing'
 import Faq from '../components/Sections/Faq'
 import BriefForm from '../components/Sections/BriefForm'
@@ -39,6 +40,8 @@ export default function Home() {
       <WhyUs />
       <SectionInterstitial variant="double" />
       <Process />
+      <SectionInterstitial variant="double" />
+      <Showpiece />
       <SectionInterstitial variant="line" />
       <Pricing />
       <SectionInterstitial variant="line" />

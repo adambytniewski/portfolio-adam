@@ -12,8 +12,11 @@
 html {
   background: var(--color-bg);
   color-scheme: dark;
-  /* Mobile: zapobiega horizontal scroll od GSAP animacji (x: ±N, parallax) */
-  overflow-x: hidden;
+  /* Mobile: zapobiega horizontal scroll od GSAP animacji (x: ±N, parallax).
+     UŻYWAMY `clip` zamiast `hidden` — `hidden` tworzy scroll-container co
+     łamie `position: sticky` w głębi drzewa (Showpiece section). `clip`
+     daje to samo wizualnie ale bez przekształcania w containing block. */
+  overflow-x: clip;
   /* iOS Safari nie skaluje fontów przy rotacji */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -24,7 +27,7 @@ body {
   color: var(--color-fg);
   overscroll-behavior: none;
   /* Drugie zabezpieczenie — niektóre overflow-x sięgają tylko body */
-  overflow-x: hidden;
+  overflow-x: clip;
   /* Wygładza tap na mobile — bez niebieskiego flash */
   -webkit-tap-highlight-color: transparent;
 }
@@ -123,6 +126,8 @@ html.lenis body {
   .pricing-card,
   .faq-head,
   .faq-item,
+  .showpiece-headline,
+  .showpiece-meta,
   .brief-headline > span,
   .brief-meta,
   .final-cta-line span,
