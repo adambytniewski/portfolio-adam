@@ -1,9 +1,10 @@
-import CinematicHero from '../components/Hero/CinematicHero'
+import CinematicHeroV2 from '../components/Hero/CinematicHeroV2'
 import Manifesto from '../components/Sections/Manifesto'
 import SkillsStrip from '../components/Sections/SkillsStrip'
 import SelectedWork from '../components/Sections/SelectedWork'
 import Featured from '../components/Sections/Featured'
 import NowFeed from '../components/Sections/NowFeed'
+import BriefForm from '../components/Sections/BriefForm'
 import Contact from '../components/Sections/Contact'
 import ScrollProgress from '../components/UI/ScrollProgress'
 import SectionInterstitial from '../components/UI/SectionInterstitial'
@@ -32,7 +33,7 @@ export default function Home() {
     <main className="relative">
       <ScrollProgress />
       <Nav name={profile.name} />
-      <CinematicHero />
+      <CinematicHeroV2 />
       <Manifesto />
       <SectionInterstitial variant="line" />
       <SkillsStrip />
@@ -41,6 +42,8 @@ export default function Home() {
       {/* Featured + NowFeed have their own dramatic transitions built-in */}
       <Featured />
       <NowFeed />
+      <SectionInterstitial variant="line" />
+      <BriefForm />
       <SectionInterstitial variant="line" />
       <Contact />
     </main>

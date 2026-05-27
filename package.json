@@ -13,11 +13,15 @@
     "daily-now": "node scripts/daily-now.mjs"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "@react-three/postprocessing": "^3.0.4",
     "@studio-freight/lenis": "^1.0.42",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "gsap": "^3.12.5",
     "next": "^15.0.3",
+    "postprocessing": "^6.39.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "three": "^0.170.0"
