@@ -1,4 +1,5 @@
 import CinematicHeroV2 from '../components/Hero/CinematicHeroV2'
+import CinemaReel from '../components/Sections/CinemaReel'
 import WhyUs from '../components/Sections/WhyUs'
 import Process from '../components/Sections/Process'
 import Showpiece from '../components/Sections/Showpiece'
@@ -36,6 +37,7 @@ export default function Home() {
       <ScrollProgress />
       <Nav name={profile.name} />
       <CinematicHeroV2 />
+      <CinemaReel />
       <SectionInterstitial variant="line" />
       <WhyUs />
       <SectionInterstitial variant="double" />
