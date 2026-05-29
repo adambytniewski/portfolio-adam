@@ -428,11 +428,11 @@ export default function CinematicHeroV2() {
               </span>
             </a>
             <a
-              href="#work"
+              href="#reel"
               data-magnetic
               className="hero-v2-cta inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-4 font-mono text-[11px] uppercase tracking-[0.22em] text-white/75 transition-all hover:border-[#d4a574] hover:text-[#d4a574] md:px-7 md:text-[12px]"
             >
-              Zobacz portfolio
+              Zobacz reel
               <span>↓</span>
             </a>
           </div>

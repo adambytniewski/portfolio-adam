@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import agency from '../../content/agency.json'
@@ -94,25 +95,55 @@ export default function WhyUs() {
       />
 
       <div className="relative mx-auto max-w-7xl px-5 md:px-10 lg:px-14">
-        <div className="why-head mb-6 flex items-baseline justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-white/40 md:mb-10 md:text-[11px] md:tracking-[0.32em]">
-          <span>N° 002 — Możliwości</span>
-          <span className="hidden text-[#d4a574] md:inline">
-            Czego nie da WordPress
-          </span>
+        {/* === Headline + portrait photo split layout (desktop) === */}
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:items-end md:gap-10">
+          <div className="md:col-span-8">
+            <div className="why-head mb-6 flex items-baseline justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-white/40 md:mb-10 md:text-[11px] md:tracking-[0.32em]">
+              <span>N° 002 — Możliwości</span>
+              <span className="hidden text-[#d4a574] md:inline">
+                Czego nie da WordPress
+              </span>
+            </div>
+
+            <h2 className="why-head font-display text-[clamp(2.4rem,9vw,6rem)] font-light leading-[1.02] tracking-tight text-white">
+              Dlaczego{' '}
+              <span className="italic text-[#d4a574]">Redmind</span>,
+              <br />
+              a nie szablon.
+            </h2>
+
+            <p className="why-head mt-5 max-w-2xl font-mono text-[13px] leading-relaxed text-white/65 md:mt-7 md:text-sm">
+              Sześć rzeczy które dostajesz tylko jak płacisz za ręczny code —
+              a których nigdy nie dostaniesz z page-buildera. Wystarczy żeby
+              klient Twojej firmy zostawał na stronie 3× dłużej.
+            </p>
+          </div>
+
+          {/* === Portrait photo — floating, off-axis === */}
+          <div className="why-head relative md:col-span-4 md:translate-y-4">
+            <div className="relative mx-auto h-72 w-56 overflow-hidden rounded-2xl border border-white/10 md:h-80 md:w-full md:max-w-[260px] md:translate-x-4">
+              <Image
+                src="/images/portrait-warm.jpg"
+                alt="Adam — założyciel Redmind"
+                fill
+                sizes="(max-width: 768px) 224px, 260px"
+                className="object-cover"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-[#0a0908] via-transparent to-transparent"
+              />
+              <div className="absolute bottom-3 left-3 right-3 font-mono text-[10px] uppercase tracking-[0.22em] text-white/85">
+                <span className="block text-[#d4a574]">Adam Bytniewski</span>
+                Founder · Redmind
+              </div>
+            </div>
+            {/* Decorative caption right side */}
+            <p className="mt-3 hidden font-mono text-[10px] uppercase tracking-[0.22em] text-white/35 md:block md:text-right">
+              · Cinematic web · od 2026
+            </p>
+          </div>
         </div>
-
-        <h2 className="why-head font-display text-[clamp(2.4rem,9vw,6rem)] font-light leading-[1.02] tracking-tight text-white">
-          Dlaczego{' '}
-          <span className="italic text-[#d4a574]">Redmind</span>,
-          <br />
-          a nie szablon.
-        </h2>
-
-        <p className="why-head mt-5 max-w-2xl font-mono text-[13px] leading-relaxed text-white/65 md:mt-7 md:text-sm">
-          Sześć rzeczy które dostajesz tylko jak płacisz za ręczny code, a
-          których nigdy nie dostaniesz z page-buildera. Wystarczy żeby Twój
-          klient zostawał 3× dłużej.
-        </p>
 
         <div className="why-grid mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
           {agency.whyUs.map((item) => (

@@ -1,11 +1,12 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 const links = [
+  { href: '#reel', label: 'Reel' },
   { href: '#why', label: 'Możliwości' },
   { href: '#process', label: 'Proces' },
-  { href: '#pricing', label: 'Cennik' },
   { href: '#faq', label: 'FAQ' },
 ]
 
@@ -48,10 +49,20 @@ export default function Nav({ name }: { name: string }) {
           <a
             href="#top"
             onClick={handleLinkClick}
-            className="-my-3 inline-flex items-center py-3 font-mono text-xs uppercase tracking-[0.25em] text-white md:my-0 md:py-0"
+            aria-label="Redmind — strona główna"
+            className="-my-2 inline-flex items-center gap-2.5 py-2 transition-opacity hover:opacity-80 md:my-0 md:py-0"
           >
-            {name.split(' ')[0]}
-            <span className="text-accent">.</span>
+            <Image
+              src="/images/redmind-r-logo.png"
+              alt="Redmind"
+              width={40}
+              height={40}
+              priority
+              className="h-9 w-9 select-none md:h-10 md:w-10"
+            />
+            <span className="hidden font-mono text-[10px] uppercase tracking-[0.32em] text-white/70 md:inline">
+              Redmind
+            </span>
           </a>
 
           {/* Desktop nav */}

@@ -58,18 +58,18 @@ const NEEDS = [
   },
 ]
 
-const BUDGETS = [
-  { id: 'small', label: '3 000 – 6 000 zł', tag: 'Start' },
-  { id: 'mid', label: '6 000 – 15 000 zł', tag: 'Pro' },
-  { id: 'large', label: '15 000 – 40 000 zł', tag: 'Premium' },
-  { id: 'enterprise', label: '40 000+ zł', tag: 'Custom' },
+const TIMELINES = [
+  { id: 'asap', label: 'ASAP', desc: 'Najszybciej jak się da. Tak.' },
+  { id: 'month', label: '2–4 tygodnie', desc: 'Mam konkretny deadline.' },
+  { id: 'quarter', label: '1–3 miesiące', desc: 'Spokojnie, dobrze zrobić.' },
+  { id: 'flexible', label: 'Elastycznie', desc: 'Doradź najlepiej.' },
 ]
 
 type FormData = {
   industry: string
   industryOther: string
   need: string
-  budget: string
+  timeline: string
   name: string
   email: string
   phone: string
@@ -80,7 +80,7 @@ const initialData: FormData = {
   industry: '',
   industryOther: '',
   need: '',
-  budget: '',
+  timeline: '',
   name: '',
   email: '',
   phone: '',
@@ -138,7 +138,7 @@ export default function BriefForm() {
   const canProceed = () => {
     if (step === 0) return data.industry && (data.industry !== 'other' || data.industryOther)
     if (step === 1) return !!data.need
-    if (step === 2) return !!data.budget
+    if (step === 2) return !!data.timeline
     if (step === 3) {
       const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
       return data.name.length >= 2 && emailRe.test(data.email)
@@ -152,14 +152,14 @@ export default function BriefForm() {
         ? data.industryOther
         : INDUSTRIES.find((i) => i.id === data.industry)?.label || data.industry
     const needLabel = NEEDS.find((n) => n.id === data.need)?.label || data.need
-    const budgetLabel =
-      BUDGETS.find((b) => b.id === data.budget)?.label || data.budget
+    const timelineLabel =
+      TIMELINES.find((t) => t.id === data.timeline)?.label || data.timeline
 
     return `Brief z redmind.pl
 
 Branża: ${industryLabel}
 Potrzebuję: ${needLabel}
-Budżet: ${budgetLabel}
+Timeline: ${timelineLabel}
 
 Imię: ${data.name}
 Email: ${data.email}
@@ -281,7 +281,7 @@ ${data.notes || '(brak)'}
               />
             )}
             {step === 2 && (
-              <StepBudget
+              <StepTimeline
                 data={data}
                 onChange={(patch) => setData((d) => ({ ...d, ...patch }))}
               />
@@ -460,7 +460,7 @@ function StepNeed({
   )
 }
 
-function StepBudget({
+function StepTimeline({
   data,
   onChange,
 }: {
@@ -473,19 +473,20 @@ function StepBudget({
         Krok 3 z 4
       </p>
       <h3 className="mt-3 font-display text-2xl font-light leading-tight text-white md:text-3xl">
-        Jaki masz budżet?
+        Kiedy chciałbyś launch?
       </h3>
       <p className="mt-2 font-mono text-[12px] leading-relaxed text-white/50">
-        Filtruje dopasowanie. Bez ocen, bez negocjacji na tym etapie.
+        Dobre planowanie = brak chaosu. Bez presji — wycena dopasuje się do
+        Twojego terminu.
       </p>
       <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {BUDGETS.map((b) => {
-          const active = data.budget === b.id
+        {TIMELINES.map((t) => {
+          const active = data.timeline === t.id
           return (
             <button
-              key={b.id}
+              key={t.id}
               type="button"
-              onClick={() => onChange({ budget: b.id })}
+              onClick={() => onChange({ timeline: t.id })}
               className={`rounded-xl border p-5 text-left transition-all ${
                 active
                   ? 'border-[#d4a574] bg-[#d4a574]/10'
@@ -493,18 +494,14 @@ function StepBudget({
               }`}
             >
               <p
-                className={`font-mono text-[10px] uppercase tracking-[0.22em] ${
-                  active ? 'text-[#d4a574]' : 'text-white/40'
-                }`}
-              >
-                {b.tag}
-              </p>
-              <p
-                className={`mt-2 font-display text-xl font-light leading-tight ${
+                className={`font-display text-xl font-light leading-tight ${
                   active ? 'text-white' : 'text-white/80'
                 } md:text-2xl`}
               >
-                {b.label}
+                {t.label}
+              </p>
+              <p className="mt-2 font-mono text-[12px] leading-relaxed text-white/55">
+                {t.desc}
               </p>
             </button>
           )

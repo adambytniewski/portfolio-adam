@@ -133,36 +133,40 @@
   ],
   "faq": [
     {
+      "q": "Ile to kosztuje?",
+      "a": "Każdy projekt ma indywidualną wycenę — bo każda branża, każdy klient i każdy zakres są inne. Wyślij brief lub napisz mail, w ciągu 24h dostajesz konkretną liczbę dopasowaną do Twojej sytuacji. Bez cenników, bez 'od X do Y'. Konkret."
+    },
+    {
       "q": "Ile to wszystko trwa?",
-      "a": "Start: 2–3 tygodnie. Pro: 3–6 tygodni. Premium: 6–10 tygodni. Czas zależy od ilości iteracji designu i contentu który dostarczasz."
+      "a": "Średnio 3–8 tygodni od briefa do launch. Krótkie one-pagery: 2–3 tygodnie. Większe strony z CMS, integracjami i animacjami: 6–10 tygodni. W każdej wycenie dostajesz konkretny deadline, nie 'kiedyś tam'."
     },
     {
       "q": "Co dokładnie dostaję na koniec?",
-      "a": "Pełen kod źródłowy w Twoim GitHubie, stronę live w Twojej domenie, dostęp do Vercela (hosting), CMS (jeśli w pakiecie), dokumentację 'jak to obsługiwać', email kontaktowy w domenie i analytics."
+      "a": "Pełen kod źródłowy w Twoim GitHubie, stronę live w Twojej domenie, dostęp do Vercela (hosting), CMS jeśli ustalimy, dokumentację 'jak to obsługiwać', email kontaktowy w domenie i analytics. Wszystko Twoje."
     },
     {
       "q": "Czy mogę sam edytować teksty po launchu?",
-      "a": "Tak. W pakietach Pro i Premium dostajesz prosty CMS — wpisujesz teksty w panelu jak w Wordzie, strona aktualizuje się sama. W pakiecie Start drobne poprawki robię ja, w cenie 90 dni gratis."
+      "a": "Tak. Jeśli zakres obejmuje CMS — wpisujesz teksty w panelu jak w Wordzie, strona aktualizuje się sama. Bez CMS — drobne poprawki robię ja, w cenie 90 dni gratis po launchu."
     },
     {
       "q": "Co z domeną i hostingiem?",
-      "a": "Domenę kupuję dla Ciebie u OVH lub Cię łączę z istniejącą. Hosting na Vercelu — najszybszy w Polsce, w cenie pakietu na 6/12/24 miesiące. Po tym okresie ok. 80 zł/miesiąc lub przejmujesz sam."
+      "a": "Domenę kupuję dla Ciebie u OVH lub łączę z istniejącą. Hosting na Vercelu — najszybszym CDN w Polsce, zwykle w cenie projektu na pierwsze 6–24 miesięcy. Po tym okresie ok. 80 zł/mc lub przejmujesz sam — kod jest Twój."
     },
     {
       "q": "Czy strona będzie szybka?",
-      "a": "Lighthouse Performance 95+ w Start, 100/100/100/100 w Pro i Premium. Każda strona testowana na realnym 4G + iPhone 12 przed launchem. Brak ciężkich page builderów = ładowanie pod sekundę."
+      "a": "Lighthouse Performance 95+ minimum, 100/100/100/100 w większości projektów. Każda strona testowana na realnym 4G + iPhone 12 przed launchem. Brak ciężkich page builderów = ładowanie pod sekundę."
     },
     {
-      "q": "Skąd mam wiedzieć że nie zniknę?",
-      "a": "Wszystkie source files są w Twoim GitHubie od dnia 1. Jeśli mnie nie ma — bierzesz kod i kontynuujesz z kimkolwiek. Strona jest Twoja, nie moja. Tak działa profesjonalna agencja, a nie freelancer."
+      "q": "Skąd mam wiedzieć, że nie zniknę?",
+      "a": "Wszystkie source files są w Twoim GitHubie od dnia 1. Jeśli mnie nie ma — bierzesz kod i kontynuujesz z kimkolwiek. Strona jest Twoja, nie moja. Tak działa profesjonalna agencja, nie freelancer."
     },
     {
-      "q": "Czy mogę dostać AI chatbota?",
-      "a": "Tak — w pakiecie Premium wbudowany od razu. W Pro można dodać jako add-on (~3000 zł). Chatbot odpowiada po polsku, używa Twoich tekstów jako bazę wiedzy, działa 24/7."
+      "q": "Czy mogę dostać AI chatbota albo automatyzacje?",
+      "a": "Tak — to moja specjalność. AI chatbot po polsku z bazą wiedzy Twojej firmy, automatyczne odpowiedzi na zapytania, integracje z CRM, generowanie contentu przez Claude API, n8n workflowy. Doceniam w briefie co konkretnie potrzebujesz, wycenię razem ze stroną."
     },
     {
       "q": "Jak płacę?",
-      "a": "50% na start (kick-off), 50% przed launchem. Pakiet Premium można rozłożyć na 3 raty. Faktura VAT zwykłą lub odwrotne obciążenie dla firm UE."
+      "a": "Zazwyczaj 50% na start (kick-off), 50% przed launchem. Większe projekty można rozłożyć na 3 raty. Faktura VAT, dla firm UE odwrotne obciążenie. Wszystko ustalamy w briefie."
     }
   ]
 }

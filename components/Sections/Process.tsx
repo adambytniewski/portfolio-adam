@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import agency from '../../content/agency.json'
@@ -116,9 +117,35 @@ export default function Process() {
         </h2>
 
         <p className="process-head mt-5 max-w-2xl font-mono text-[13px] leading-relaxed text-white/65 md:mt-7 md:text-sm">
-          Każdy etap zaplanowany. Każdy krok wyceniony. Bez surprise-billa, bez
-          "to się okaże po drodze". Tak wygląda dobrze prowadzony projekt.
+          Każdy etap zaplanowany. Każdy krok research-first — audytujemy Twoją
+          branżę, konkurencję, klientów zanim napiszemy linijkę kodu. Bez
+          "to się okaże po drodze".
         </p>
+
+        {/* === Hands+keyboard photo — floating sideways === */}
+        <div className="process-head mt-12 hidden md:block">
+          <div className="relative -mr-10 ml-auto h-56 max-w-3xl overflow-hidden rounded-2xl border border-white/10 md:h-72 lg:h-80">
+            <Image
+              src="/images/hands-keyboard.jpg"
+              alt="Ręce na klawiaturze — ręczny code"
+              fill
+              sizes="(max-width: 768px) 100vw, 800px"
+              className="object-cover object-center"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-gradient-to-r from-[#0a0908] via-[#0a0908]/40 to-transparent"
+            />
+            <div className="absolute bottom-5 left-5 max-w-xs">
+              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#d4a574]">
+                — Każda linia ręcznie
+              </p>
+              <p className="mt-2 font-display text-lg font-light italic text-white md:text-xl">
+                "Code który nikt inny nie ma."
+              </p>
+            </div>
+          </div>
+        </div>
 
         <div className="process-list relative mt-14 md:mt-20">
           {/* Vertical connecting line — animuje się ScrollTriggerem */}

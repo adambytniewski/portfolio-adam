@@ -3,7 +3,6 @@ import CinemaReel from '../components/Sections/CinemaReel'
 import WhyUs from '../components/Sections/WhyUs'
 import Process from '../components/Sections/Process'
 import Showpiece from '../components/Sections/Showpiece'
-import Pricing from '../components/Sections/Pricing'
 import Faq from '../components/Sections/Faq'
 import BriefForm from '../components/Sections/BriefForm'
 import FinalCta from '../components/Sections/FinalCta'
@@ -14,22 +13,26 @@ import Nav from '../components/Nav'
 import { profile } from '../lib/content'
 
 /**
- * REDMIND AGENCY — landing page flow.
+ * REDMIND AGENCY — landing page flow (v3).
  *
- *  Hero (cinematic 3D portal — premium morphing crystal, scroll-bound morph)
+ *  Hero (cinematic 3D portal + R-logo emergence)
+ *    ↓ direct (no interstitial — cinema reel jest "obietnicą" zaraz po hero)
+ *  Cinema Reel (65s pinned scroll-bound, 9-video continuous + multi-stage overlays)
  *    ↓ subtle horizon line
- *  Why Us (6 differentiatorów vs WordPress/Wix)
+ *  Why Us (6 differentiatorów + portrait photo floating off-axis)
+ *    ↓ double horizon line
+ *  Process (5 kroków + hands+keyboard photo, research-first messaging)
+ *    ↓ double horizon line
+ *  Showpiece (R3F particles 3D scene)
  *    ↓ subtle horizon line
- *  Process (5 kroków od briefa do launch — vertical timeline)
+ *  FAQ (9 typowych pytań — bez cennika, "Każdy projekt ma indywidualną wycenę")
  *    ↓ subtle horizon line
- *  Pricing (3 paczki Start/Pro/Premium z konkretnymi cenami)
- *    ↓ subtle horizon line
- *  FAQ (8 typowych pytań klienta MŚP)
- *    ↓ subtle horizon line
- *  Brief Form (4-step lead qualifier)
- *    ↓ subtle horizon line
+ *  Brief Form (4-step: Branża → Potrzeba → Timeline → Kontakt)
+ *    ↓
  *  Final CTA ("Zaczniemy?")
- *  Footer (minimal: wordmark + kontakt + social)
+ *  Footer (Redmind. wordmark + kontakt + social)
+ *
+ * USUNIĘTE: Pricing — cena indywidualna, ustalana mailem.
  */
 export default function Home() {
   return (
@@ -44,8 +47,6 @@ export default function Home() {
       <Process />
       <SectionInterstitial variant="double" />
       <Showpiece />
-      <SectionInterstitial variant="line" />
-      <Pricing />
       <SectionInterstitial variant="line" />
       <Faq />
       <SectionInterstitial variant="line" />
