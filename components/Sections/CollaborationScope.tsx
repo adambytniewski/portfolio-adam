@@ -10,17 +10,15 @@ if (typeof window !== 'undefined') {
 }
 
 /**
- * SUBSCRIPTION VALUE — co dostajesz w subskrypcji miesięcznej.
+ * COLLABORATION SCOPE — co obejmuje współpraca.
  *
- * "Wszystko w jednym. Bez surprise-bila."
  * Pokazuje 6 includes: domena, hosting, SSL, updaty, monitoring, support.
- * BEZ CENY — cena indywidualna, ustalana po mockupie.
+ * Bez wzmianki o subskrypcji, cenie ani "indywidualnej wycenie".
+ * Czysto informacyjnie — co klient dostaje w ramach projektu.
  *
- * Layout: 2x3 bento grid, każdy include z subtle ikona+title+desc.
- * GSAP entry: cards wjeżdżają w stagger, hover lift na desktop.
+ * Layout: 2x3 bento grid, każdy include z subtle ikona + title + desc.
  */
 
-// Subtle SVG icons — minimal cinematic style
 function ServiceIcon({ kind }: { kind: string }) {
   const className = 'h-7 w-7 text-[#d4a574] md:h-8 md:w-8'
   switch (kind) {
@@ -73,13 +71,13 @@ function ServiceIcon({ kind }: { kind: string }) {
   }
 }
 
-export default function SubscriptionValue() {
+export default function CollaborationScope() {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const isMobile = window.matchMedia('(max-width: 767px)').matches
     const ctx = gsap.context(() => {
-      gsap.from('.sub-head', {
+      gsap.from('.scope-head', {
         y: isMobile ? 16 : 24,
         duration: 0.9,
         stagger: 0.08,
@@ -89,13 +87,13 @@ export default function SubscriptionValue() {
           start: isMobile ? 'top 95%' : 'top 80%',
         },
       })
-      gsap.from('.sub-card', {
+      gsap.from('.scope-card', {
         y: isMobile ? 24 : 50,
         duration: isMobile ? 0.7 : 0.9,
         stagger: 0.06,
         ease: 'expo.out',
         scrollTrigger: {
-          trigger: '.sub-grid',
+          trigger: '.scope-grid',
           start: isMobile ? 'top 95%' : 'top 85%',
         },
       })
@@ -106,34 +104,34 @@ export default function SubscriptionValue() {
   return (
     <section
       ref={ref}
-      id="subscription"
+      id="scope"
       className="relative overflow-hidden bg-transparent py-24 md:py-44"
     >
       <div className="relative mx-auto max-w-7xl px-5 md:px-10 lg:px-14">
-        <div className="sub-head flex items-baseline justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-white/40 md:text-[11px] md:tracking-[0.32em]">
-          <span>{agency.subscription.eyebrow}</span>
+        <div className="scope-head flex items-baseline justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-white/40 md:text-[11px] md:tracking-[0.32em]">
+          <span>{agency.scope.eyebrow}</span>
           <span className="hidden text-[#d4a574] md:inline">
-            6 rzeczy w jednej kwocie
+            Wszystko w jednym zakresie
           </span>
         </div>
 
-        <h2 className="sub-head mt-6 font-display text-[clamp(2.4rem,9vw,6rem)] font-light leading-[1.02] tracking-tight text-white md:mt-10">
-          {agency.subscription.headline}{' '}
+        <h2 className="scope-head mt-6 font-display text-[clamp(2.4rem,9vw,6rem)] font-light leading-[1.02] tracking-tight text-white md:mt-10">
+          {agency.scope.headline}{' '}
           <span className="italic text-[#d4a574]">
-            {agency.subscription.headlineAccent}
+            {agency.scope.headlineAccent}
           </span>
         </h2>
 
-        <p className="sub-head mt-5 max-w-2xl font-mono text-[13px] leading-relaxed text-white/65 md:mt-7 md:text-sm">
-          {agency.subscription.body}
+        <p className="scope-head mt-5 max-w-2xl font-mono text-[13px] leading-relaxed text-white/65 md:mt-7 md:text-sm">
+          {agency.scope.body}
         </p>
 
         {/* === 2x3 BENTO GRID === */}
-        <div className="sub-grid mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
-          {agency.subscription.includes.map((item, i) => (
+        <div className="scope-grid mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
+          {agency.scope.includes.map((item, i) => (
             <article
               key={i}
-              className="sub-card group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.015] p-6 backdrop-blur-sm transition-colors hover:border-[#d4a574]/40 md:p-7"
+              className="scope-card group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.015] p-6 backdrop-blur-sm transition-colors hover:border-[#d4a574]/40 md:p-7"
             >
               {/* Icon */}
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-[#d4a574]/30 bg-[#d4a574]/[0.06]">
@@ -162,30 +160,6 @@ export default function SubscriptionValue() {
               />
             </article>
           ))}
-        </div>
-
-        {/* Bottom note — pricing disclaimer */}
-        <div className="sub-head mt-12 rounded-2xl border border-white/10 bg-white/[0.015] p-6 md:mt-16 md:p-8">
-          <div className="flex flex-col items-start justify-between gap-5 md:flex-row md:items-center md:gap-10">
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#d4a574]">
-                ★ Cena dopasowana indywidualnie
-              </p>
-              <p className="mt-3 max-w-xl font-mono text-[13px] leading-relaxed text-white/65 md:text-sm">
-                Konkretna kwota zależy od zakresu Twojej strony, branży i
-                liczby integracji. Po DARMOWYM mockupie dostajesz dokładną liczbę
-                miesięczną — bez surprise-billa.
-              </p>
-            </div>
-            <a
-              href="#mockup"
-              data-magnetic
-              className="shrink-0 inline-flex items-center gap-2 rounded-full border border-[#d4a574]/60 bg-[#d4a574]/[0.08] px-5 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-[#d4a574] transition-all hover:bg-[#d4a574] hover:text-[#0a0908]"
-            >
-              Zacznij od mockupu
-              <span>↑</span>
-            </a>
-          </div>
         </div>
       </div>
     </section>

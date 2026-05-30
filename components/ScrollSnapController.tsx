@@ -25,11 +25,9 @@ if (typeof window !== 'undefined') {
 
 const SECTION_IDS = [
   'top',
-  'truth',
   'why',
-  'mockup',
   'process',
-  'subscription',
+  'scope',
   'faq',
   'brief',
 ]

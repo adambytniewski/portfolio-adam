@@ -1,9 +1,7 @@
 import CinematicHeroV2 from '../components/Hero/CinematicHeroV2'
-import HookSection from '../components/Sections/HookSection'
 import WhyUs from '../components/Sections/WhyUs'
-import FreeMockup from '../components/Sections/FreeMockup'
 import Process from '../components/Sections/Process'
-import SubscriptionValue from '../components/Sections/SubscriptionValue'
+import CollaborationScope from '../components/Sections/CollaborationScope'
 import Faq from '../components/Sections/Faq'
 import BriefForm from '../components/Sections/BriefForm'
 import FinalCta from '../components/Sections/FinalCta'
@@ -14,27 +12,22 @@ import Nav from '../components/Nav'
 import { profile } from '../lib/content'
 
 /**
- * REDMIND AGENCY — landing page flow (v5 — clean video-bg).
+ * REDMIND AGENCY — landing page flow (v6 — professional restraint).
  *
- * Cale tlo strony to user's 45s 60fps reel (FullPageVideoBg w layout.tsx).
- * USUNIETE: Hero 3D crystal Canvas + Showpiece R3F particles (per user feedback,
- * "wygladaja tragicznie" w kontrascie z premium video).
+ * Professional, restrained, inviting copy. Maksymalizacja konwersji przez
+ * zaufanie zamiast pressure. Bez cen, bez "darmowych mockupów", bez urgency.
  *
- *  Hero — video bg widoczne od razu, tylko HTML content (h1, sub, CTA)
+ *  Hero — video bg, headline "Strony które klient pamięta", CTA "Porozmawiajmy"
  *    ↓
- *  Hook Section "Brzydka prawda" — killer stats (7/10, 48h, 0 zł)
+ *  Why Us — 6 differentiatorów (Lighthouse 100, kod jest Twój, etc)
  *    ↓
- *  Why Us — 6 differentiatorów + portrait photo
+ *  Process — 5 kroków od briefu do grow
  *    ↓
- *  Free Mockup — zero-friction offer (DARMOWY w 48h)
+ *  Collaboration Scope — co obejmuje współpraca (6 includes, bez wzmianki ceny)
  *    ↓
- *  Process — 5 kroków + hands+keyboard photo
+ *  FAQ — 8 pytań professional
  *    ↓
- *  Subscription Value — 6 includes (bez ceny)
- *    ↓
- *  FAQ — pytania klienta
- *    ↓
- *  Brief Form — 4-step lead qualifier
+ *  Brief Form — 4-step lead capture (low friction)
  *    ↓
  *  Final CTA + Footer
  */
@@ -44,15 +37,11 @@ export default function Home() {
       <ScrollProgress />
       <Nav name={profile.name} />
       <CinematicHeroV2 />
-      <HookSection />
-      <SectionInterstitial variant="line" />
       <WhyUs />
-      <SectionInterstitial variant="double" />
-      <FreeMockup />
       <SectionInterstitial variant="line" />
       <Process />
       <SectionInterstitial variant="line" />
-      <SubscriptionValue />
+      <CollaborationScope />
       <SectionInterstitial variant="line" />
       <Faq />
       <SectionInterstitial variant="line" />

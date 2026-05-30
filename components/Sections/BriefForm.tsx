@@ -241,8 +241,8 @@ ${data.notes || '(brak)'}
         </h2>
 
         <p className="brief-meta mt-5 max-w-2xl font-mono text-[13px] leading-relaxed text-white/65 md:mt-7 md:text-sm">
-          Krótki brief — odpowiem w ciągu 24h z konkretną wyceną. Bez sales-pitchy,
-          bez ankiet pamiętających Cię do końca życia. Tylko 4 pytania.
+          Krótki brief — w ciągu 24 godzin dostajesz odpowiedź z propozycją
+          dalszych kroków. Cztery pytania, bez zobowiązań.
         </p>
 
         {/* Form container */}
@@ -573,12 +573,12 @@ function StepSuccess({ data }: { data: FormData }) {
         <span className="text-3xl text-[#d4a574]">✓</span>
       </div>
       <h3 className="font-display text-3xl font-light leading-tight text-white md:text-4xl">
-        Otrzymałem brief.
+        Brief odebrany.
       </h3>
       <p className="mt-4 mx-auto max-w-md font-mono text-[13px] leading-relaxed text-white/65 md:text-sm">
-        Dzięki, {data.name || 'partnerze'}. Odezwę się na{' '}
+        Dzięki, {data.name || 'partnerze'}. Skontaktuję się z Tobą na{' '}
         <span className="text-[#d4a574]">{data.email}</span> w ciągu 24 godzin
-        z konkretną wyceną i propozycją kolejnych kroków.
+        z propozycją dalszych kroków.
       </p>
       <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.28em] text-white/35">
         Możesz teraz spokojnie zamknąć kartę.

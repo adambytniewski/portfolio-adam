@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 const links = [
-  { href: '#reel', label: 'Reel' },
-  { href: '#mockup', label: 'Mockup 48h' },
+  { href: '#why', label: 'Możliwości' },
   { href: '#process', label: 'Proces' },
+  { href: '#scope', label: 'Zakres' },
   { href: '#faq', label: 'FAQ' },
 ]
 
@@ -81,11 +81,11 @@ export default function Nav({ name }: { name: string }) {
           {/* Right side: CTA (desktop) + hamburger (mobile) */}
           <div className="flex items-center gap-3">
             <a
-              href="#mockup"
+              href="#brief"
               onClick={handleLinkClick}
               className="group relative hidden overflow-hidden rounded-full bg-accent px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-[#0a0908] transition-colors duration-300 hover:bg-white md:inline-block"
             >
-              Darmowy mockup →
+              Porozmawiajmy →
             </a>
 
             {/* Hamburger button — visible only on mobile */}
@@ -164,12 +164,12 @@ export default function Nav({ name }: { name: string }) {
           {/* Footer block */}
           <div className="space-y-5 border-t border-white/10 pt-6">
             <a
-              href="#mockup"
+              href="#brief"
               onClick={handleLinkClick}
               className="inline-flex w-full items-center justify-between rounded-full bg-accent px-5 py-3.5 font-mono text-[11px] uppercase tracking-[0.25em] text-[#0a0908]"
             >
               <span className="inline-flex items-center gap-2">
-                Darmowy mockup 48h
+                Porozmawiajmy o projekcie
               </span>
               <span>→</span>
             </a>

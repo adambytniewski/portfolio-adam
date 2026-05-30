@@ -86,8 +86,9 @@ export default function FinalCta() {
         </h2>
 
         <p className="final-cta-meta mt-8 max-w-xl mx-auto font-mono text-[13px] leading-relaxed text-white/70 md:mt-10 md:text-sm">
-          Brief — 2 minuty. Darmowy mockup — w 48 godzin. Bez umowy, bez kosztu.
-          Zerkasz, decydujesz. Nic Cię to nie kosztuje, więc czemu nie?
+          Krótki brief — odpowiadam w ciągu 24 godzin. Bez zobowiązań,
+          bez sales-pitchy. Tyle dzieli Twoją firmę od strony, którą klient
+          zapamięta.
         </p>
 
         <div className="final-cta-meta mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center md:mt-14">
@@ -96,7 +97,7 @@ export default function FinalCta() {
             data-magnetic
             className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#d4a574] px-7 py-5 font-mono text-[12px] uppercase tracking-[0.22em] text-[#0a0908] transition-all hover:bg-white md:px-10 md:py-6 md:text-[13px]"
           >
-            Darmowy mockup w 48h
+            Wyślij brief
             <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
               →
             </span>
