@@ -213,7 +213,7 @@ ${data.notes || '(brak)'}
     <section
       ref={sectionRef}
       id="brief"
-      className="relative overflow-hidden bg-[#0a0908] py-24 md:py-40"
+      className="relative overflow-hidden bg-transparent py-24 md:py-40"
     >
       {/* Top warm glow */}
       <div

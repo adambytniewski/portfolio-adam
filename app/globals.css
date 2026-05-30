@@ -23,7 +23,9 @@ html {
 }
 
 body {
-  background: var(--color-bg);
+  /* TRANSPARENT — FullPageVideoBg (fixed inset-0 z-0) musi być widoczne za content.
+     html bg: #0a0908 jest fallbackiem zanim video się załaduje. */
+  background: transparent;
   color: var(--color-fg);
   overscroll-behavior: none;
   /* Drugie zabezpieczenie — niektóre overflow-x sięgają tylko body */

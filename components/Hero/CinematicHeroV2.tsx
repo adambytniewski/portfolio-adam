@@ -349,7 +349,7 @@ export default function CinematicHeroV2() {
     <section
       ref={sectionRef}
       id="top"
-      className="relative h-[100svh] w-full overflow-hidden bg-[#0a0908]"
+      className="relative h-[100svh] w-full overflow-hidden bg-[#0a0908]/60 backdrop-blur-[1px]"
     >
       {/* === 3D Canvas layer (z-0) === */}
       {is3DEnabled && (

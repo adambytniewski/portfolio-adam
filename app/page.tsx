@@ -1,5 +1,4 @@
 import CinematicHeroV2 from '../components/Hero/CinematicHeroV2'
-import CinemaReel from '../components/Sections/CinemaReel'
 import HookSection from '../components/Sections/HookSection'
 import WhyUs from '../components/Sections/WhyUs'
 import FreeMockup from '../components/Sections/FreeMockup'
@@ -49,7 +48,6 @@ export default function Home() {
       <ScrollProgress />
       <Nav name={profile.name} />
       <CinematicHeroV2 />
-      <CinemaReel />
       <HookSection />
       <SectionInterstitial variant="line" />
       <WhyUs />

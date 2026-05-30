@@ -57,7 +57,7 @@ export default function Faq() {
     <section
       ref={sectionRef}
       id="faq"
-      className="relative overflow-hidden bg-[#0a0908] py-24 md:py-44"
+      className="relative overflow-hidden bg-transparent py-24 md:py-44"
     >
       <div className="relative mx-auto max-w-4xl px-5 md:px-10 lg:px-14">
         <div className="faq-head mb-6 flex items-baseline justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-white/40 md:mb-10 md:text-[11px] md:tracking-[0.32em]">

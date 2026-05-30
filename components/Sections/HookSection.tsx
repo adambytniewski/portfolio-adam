@@ -87,7 +87,7 @@ export default function HookSection() {
     <section
       ref={ref}
       id="truth"
-      className="relative overflow-hidden bg-[#0a0908] py-24 md:py-44"
+      className="relative overflow-hidden bg-transparent py-24 md:py-44"
     >
       {/* Dramatic ambient glow — red/amber undertone (urgency, not warning) */}
       <div

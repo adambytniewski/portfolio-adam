@@ -91,7 +91,7 @@ export default function Process() {
     <section
       ref={sectionRef}
       id="process"
-      className="relative overflow-hidden bg-[#0a0908] py-24 md:py-44"
+      className="relative overflow-hidden bg-transparent py-24 md:py-44"
     >
       {/* Diagonal ambient gradient */}
       <div

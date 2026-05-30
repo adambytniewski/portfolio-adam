@@ -82,7 +82,7 @@ export default function WhyUs() {
     <section
       ref={sectionRef}
       id="why"
-      className="relative overflow-hidden bg-[#0a0908] py-24 md:py-44"
+      className="relative overflow-hidden bg-transparent py-24 md:py-44"
     >
       {/* Background ambient glow */}
       <div

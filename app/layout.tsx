@@ -5,6 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import SmoothScroll from '../components/SmoothScroll'
 import MagneticCursor from '../components/UI/MagneticCursor'
 import Preloader from '../components/UI/Preloader'
+import FullPageVideoBg from '../components/FullPageVideoBg'
 import './globals.css'
 
 const fraunces = Fraunces({
@@ -60,6 +61,8 @@ export default function RootLayout({
       className={`${fraunces.variable} ${mono.variable} ${grotesk.variable}`}
     >
       <body className="font-mono antialiased">
+        {/* GLOBAL VIDEO BACKGROUND — fixed pos, za całą stroną */}
+        <FullPageVideoBg />
         <Preloader />
         <MagneticCursor />
         <SmoothScroll>{children}</SmoothScroll>

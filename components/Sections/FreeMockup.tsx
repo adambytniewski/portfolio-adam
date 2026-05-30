@@ -89,7 +89,7 @@ export default function FreeMockup() {
     <section
       ref={ref}
       id="mockup"
-      className="relative overflow-hidden bg-[#0a0908] py-24 md:py-44"
+      className="relative overflow-hidden bg-transparent py-24 md:py-44"
     >
       {/* Triple-layer ambient glow — najmocniejszy w sekcji konwersyjnej */}
       <div

@@ -16,7 +16,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-[#0a0908] pb-10 pt-16 md:pt-24">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-transparent pb-10 pt-16 md:pt-24">
       <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-14">
         {/* Big wordmark "Redmind." */}
         <h3

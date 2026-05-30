@@ -62,7 +62,7 @@ export default function FinalCta() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-[#0a0908] py-32 md:py-56"
+      className="relative overflow-hidden bg-transparent py-32 md:py-56"
     >
       {/* Pulsujący accent glow */}
       <div
