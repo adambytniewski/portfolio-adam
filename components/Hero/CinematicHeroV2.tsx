@@ -349,38 +349,16 @@ export default function CinematicHeroV2() {
     <section
       ref={sectionRef}
       id="top"
-      className="relative h-[100svh] w-full overflow-hidden bg-[#0a0908]/60 backdrop-blur-[1px]"
+      className="relative h-[100svh] w-full overflow-hidden bg-transparent"
     >
-      {/* === 3D Canvas layer (z-0) === */}
-      {is3DEnabled && (
-        <div className="absolute inset-0 z-0">
-          <Canvas
-            gl={{
-              antialias: true,
-              toneMapping: THREE.ACESFilmicToneMapping,
-              powerPreference: 'high-performance',
-            }}
-            dpr={[1, isMobile ? 1.5 : 2]}
-            camera={{ position: [0, 0, 4.5], fov: 35 }}
-          >
-            <color attach="background" args={['#0a0908']} />
-            <fog attach="fog" args={['#0a0908', 6, 14]} />
-            <Scene
-              scrollRef={scrollRef}
-              mouseRef={mouseRef}
-              isMobile={isMobile}
-            />
-          </Canvas>
-        </div>
-      )}
-
-      {/* Soft radial glow behind content for legibility */}
+      {/* 3D Canvas USUNIETY — video bg z layoutu jest natywnym tlem hero.
+          Subtle bottom-up dark gradient zachowany dla czytelnosci tekstu. */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-10"
         style={{
           background:
-            'radial-gradient(ellipse at center bottom, rgba(10,9,8,0) 0%, rgba(10,9,8,0.7) 70%, rgba(10,9,8,0.92) 100%)',
+            'linear-gradient(180deg, rgba(10,9,8,0.35) 0%, rgba(10,9,8,0) 25%, rgba(10,9,8,0) 60%, rgba(10,9,8,0.85) 100%)',
         }}
       />
 

@@ -3,7 +3,6 @@ import HookSection from '../components/Sections/HookSection'
 import WhyUs from '../components/Sections/WhyUs'
 import FreeMockup from '../components/Sections/FreeMockup'
 import Process from '../components/Sections/Process'
-import Showpiece from '../components/Sections/Showpiece'
 import SubscriptionValue from '../components/Sections/SubscriptionValue'
 import Faq from '../components/Sections/Faq'
 import BriefForm from '../components/Sections/BriefForm'
@@ -15,30 +14,27 @@ import Nav from '../components/Nav'
 import { profile } from '../lib/content'
 
 /**
- * REDMIND AGENCY — landing page flow (v4 — "Brzydka prawda" pattern).
+ * REDMIND AGENCY — landing page flow (v5 — clean video-bg).
  *
- *  Inspirowane cold email outreach Adama z LeadHuntera:
- *  killer stat → disarming honesty → free value first → konwersja.
+ * Cale tlo strony to user's 45s 60fps reel (FullPageVideoBg w layout.tsx).
+ * USUNIETE: Hero 3D crystal Canvas + Showpiece R3F particles (per user feedback,
+ * "wygladaja tragicznie" w kontrascie z premium video).
  *
- *  Hero (cinematic 3D portal — premium morphing crystal)
- *    ↓
- *  Cinema Reel (65s pinned scroll-bound, 9-video continuous + multi-stage overlays)
+ *  Hero — video bg widoczne od razu, tylko HTML content (h1, sub, CTA)
  *    ↓
  *  Hook Section "Brzydka prawda" — killer stats (7/10, 48h, 0 zł)
- *    ↓ interstitial line
- *  Why Us — 6 differentiatorów + portrait photo floating
- *    ↓ interstitial double
- *  Free Mockup — zero-friction offer (DARMOWY w 48h, bez umowy)
- *    ↓ interstitial line
+ *    ↓
+ *  Why Us — 6 differentiatorów + portrait photo
+ *    ↓
+ *  Free Mockup — zero-friction offer (DARMOWY w 48h)
+ *    ↓
  *  Process — 5 kroków + hands+keyboard photo
- *    ↓ interstitial double
- *  Showpiece (R3F particles 3D scene)
- *    ↓ interstitial line
- *  Subscription Value — co dostajesz w subskrypcji (bez ceny!)
- *    ↓ interstitial line
- *  FAQ — 11 pytań ze szczegółami subskrypcji i mockupu
- *    ↓ interstitial line
- *  Brief Form (4-step: Branża → Potrzeba → Timeline → Kontakt)
+ *    ↓
+ *  Subscription Value — 6 includes (bez ceny)
+ *    ↓
+ *  FAQ — pytania klienta
+ *    ↓
+ *  Brief Form — 4-step lead qualifier
  *    ↓
  *  Final CTA + Footer
  */
@@ -55,8 +51,6 @@ export default function Home() {
       <FreeMockup />
       <SectionInterstitial variant="line" />
       <Process />
-      <SectionInterstitial variant="double" />
-      <Showpiece />
       <SectionInterstitial variant="line" />
       <SubscriptionValue />
       <SectionInterstitial variant="line" />
