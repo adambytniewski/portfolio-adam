@@ -78,11 +78,14 @@ export default function FullPageVideoBg() {
           poster="/videos/redmind-bg-poster.jpg"
         >
           <source
-            src="/videos/cinema-reel.mp4"
+            src="/videos/redmind-bg-60fps.mp4"
             type="video/mp4"
             media="(min-width: 768px)"
           />
-          <source src="/videos/cinema-reel-480.mp4" type="video/mp4" />
+          <source
+            src="/videos/redmind-bg-60fps-mobile.mp4"
+            type="video/mp4"
+          />
         </video>
       )}
 
