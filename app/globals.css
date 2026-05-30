@@ -20,8 +20,37 @@ html {
   /* iOS Safari nie skaluje fontów przy rotacji */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  /* Smooth scroll fallback gdyby GSAP snap nie zadziałał (np. JS disabled) */
-  scroll-behavior: smooth;
+}
+
+/* ────────────────────────────────────────────────────────────────────
+ * "VIDEO FOREGROUND" podczas scrollu/snap
+ *
+ * Gdy user scrolluje, ScrollSnapController dodaje .is-snapping na <html>.
+ * Efekt: tło-sekwencja (canvas) wskakuje na pierwszy plan (overlay się
+ * rozjaśnia), a content sekcji przyciemnia się. Gdy scroll się zatrzyma,
+ * .is-snapping znika → sekcja wraca do pełnej widoczności, overlay przyciemnia.
+ *
+ * To realizuje request: "jak się dzieje snap to niech wideo wskakuje na
+ * pierwszy plan, dzieje się podczas tego, i dopiero potem pojawia się sekcja".
+ * ──────────────────────────────────────────────────────────────────── */
+main > section {
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.is-snapping .redmind-overlay {
+  background-color: rgba(10, 9, 8, 0.18) !important;
+}
+
+html.is-snapping main > section {
+  opacity: 0.12;
+  transition: opacity 0.2s ease;
+}
+
+/* Nav i Footer zostają widoczne — to nie scroll-content */
+html.is-snapping nav,
+html.is-snapping header,
+html.is-snapping footer {
+  opacity: 1 !important;
 }
 
 body {

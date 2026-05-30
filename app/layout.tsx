@@ -5,7 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import SmoothScroll from '../components/SmoothScroll'
 import MagneticCursor from '../components/UI/MagneticCursor'
 import Preloader from '../components/UI/Preloader'
-import FullPageVideoBg from '../components/FullPageVideoBg'
+import FrameSequenceBg from '../components/FrameSequenceBg'
 import ScrollSnapController from '../components/ScrollSnapController'
 import './globals.css'
 
@@ -62,9 +62,9 @@ export default function RootLayout({
       className={`${fraunces.variable} ${mono.variable} ${grotesk.variable}`}
     >
       <body className="font-mono antialiased">
-        {/* GLOBAL VIDEO BACKGROUND — fixed pos, za całą stroną */}
-        <FullPageVideoBg />
-        {/* SCROLL SNAP + VIDEO SCRUB — sterowanie video.currentTime przez scroll */}
+        {/* GLOBAL FRAME-SEQUENCE BACKGROUND — canvas image sequence (Apple-style) */}
+        <FrameSequenceBg />
+        {/* SCROLL SNAP + FRAME SCRUB + video-foreground behavior */}
         <ScrollSnapController />
         <Preloader />
         <MagneticCursor />
