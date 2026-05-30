@@ -25,6 +25,22 @@ if (typeof window !== 'undefined') {
 
 const SECTION_IDS = ['top', 'why', 'process', 'scope', 'faq', 'brief', 'cta']
 
+/**
+ * PAUSE FRAMES — composed "rest" klatki dla każdej sekcji (z 906-frame sequence).
+ * Zweryfikowane wizualnie jako settled kompozycje (nie mid-morph blur):
+ *  - 30  → medytacja, słup światła (Hero)
+ *  - 120 → profil biała koszula (Why Us)
+ *  - 300 → 3 panele ze szkicami (Process)
+ *  - 480 → złoty łuk + "W" pin (Scope)
+ *  - 660 → galeria 3 obrazów (FAQ)
+ *  - 760 → przejście (Brief)
+ *  - 850 → close-up twarz, zielone oczy (Final CTA)
+ *
+ * Między sekcjami frame interpoluje przez klatki pomiędzy = video "gra"
+ * podczas snap, "zatrzymuje się" na composed frame gdy sekcja settled.
+ */
+const PAUSE_FRAMES = [30, 120, 300, 480, 660, 760, 850]
+
 export default function ScrollSnapController() {
   useEffect(() => {
     const reducedMotion = window.matchMedia(
@@ -43,20 +59,39 @@ export default function ScrollSnapController() {
         document.getElementById(id),
       ).filter(Boolean) as HTMLElement[]
 
-      // === FRAME SCRUB via RAF (działa nawet bez snap, np. reduced-motion) ===
+      // === PIECEWISE FRAME SCRUB via RAF ===
+      // Każda sekcja ląduje na swojej pause frame; między sekcjami frame
+      // interpoluje liniowo przez klatki pomiędzy = "video gra podczas snap,
+      // zatrzymuje się na composed frame gdy sekcja settled".
       const scrub = () => {
         if (disposed) return
         const setFrame = (window as any).__redmindSetFrame as
-          | ((p: number) => void)
+          | ((frameIdx: number) => void)
           | undefined
-        if (setFrame) {
-          const maxScroll =
-            document.documentElement.scrollHeight - window.innerHeight
-          const progress =
-            maxScroll > 0
-              ? Math.max(0, Math.min(1, window.scrollY / maxScroll))
-              : 0
-          setFrame(progress)
+        if (setFrame && sections.length > 1) {
+          const pts = sections.map((s) => s.offsetTop) // px positions
+          const y = window.scrollY
+          let frame: number
+
+          if (y <= pts[0]) {
+            frame = PAUSE_FRAMES[0]
+          } else if (y >= pts[pts.length - 1]) {
+            frame = PAUSE_FRAMES[Math.min(pts.length - 1, PAUSE_FRAMES.length - 1)]
+          } else {
+            frame = PAUSE_FRAMES[0]
+            for (let i = 0; i < pts.length - 1; i++) {
+              if (y >= pts[i] && y < pts[i + 1]) {
+                const span = pts[i + 1] - pts[i]
+                const localT = span > 0 ? (y - pts[i]) / span : 0
+                const fa = PAUSE_FRAMES[Math.min(i, PAUSE_FRAMES.length - 1)]
+                const fb =
+                  PAUSE_FRAMES[Math.min(i + 1, PAUSE_FRAMES.length - 1)]
+                frame = fa + (fb - fa) * localT
+                break
+              }
+            }
+          }
+          setFrame(frame)
         }
         raf = requestAnimationFrame(scrub)
       }

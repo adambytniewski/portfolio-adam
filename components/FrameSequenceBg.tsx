@@ -97,9 +97,11 @@ export default function FrameSequenceBg() {
       ctx.drawImage(img, dx, dy, dw, dh)
     }
 
-    // Expose globally for ScrollSnapController
-    ;(window as any).__redmindSetFrame = (progress: number) => {
-      drawFrame(progress * (TOTAL_FRAMES - 1))
+    // Expose globally for ScrollSnapController.
+    // Przyjmuje BEZPOŚREDNI indeks klatki (0..905) — ScrollSnapController robi
+    // piecewise mapping scroll→frame (sekcje lądują na composed pause frames).
+    ;(window as any).__redmindSetFrame = (frameIdx: number) => {
+      drawFrame(frameIdx)
     }
     ;(window as any).__redmindFrameCount = TOTAL_FRAMES
 
@@ -138,12 +140,10 @@ export default function FrameSequenceBg() {
     }
     run()
 
-    // Redraw on resize
+    // Redraw on resize — ScrollSnapController RAF loop i tak przerysuje,
+    // tu tylko ensure canvas resize natychmiast
     const onResize = () => {
-      const maxScroll =
-        document.documentElement.scrollHeight - window.innerHeight
-      const p = maxScroll > 0 ? window.scrollY / maxScroll : 0
-      drawFrame(p * (TOTAL_FRAMES - 1))
+      drawFrame(0)
     }
     window.addEventListener('resize', onResize)
 
