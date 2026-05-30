@@ -25,29 +25,12 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     const isMobile = window.matchMedia('(max-width: 767px)').matches
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-    if (isTouch || isMobile || reducedMotion) {
-      // Mobile/touch — używamy natywnego scrolla, dajemy ScrollTriggerowi
-      // pracować bezpośrednio bez proxy Lenisa.
-      return
-    }
-
-    const lenis = new Lenis({
-      lerp: 0.1,
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-    })
-
-    lenis.on('scroll', ScrollTrigger.update)
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000)
-    })
-    gsap.ticker.lagSmoothing(0)
-
-    return () => {
-      lenis.destroy()
-    }
+    // WAŻNE: Lenis WYŁĄCZONY GLOBALNIE, bo konfliktuje ze ScrollSnapController
+    // (snap między sekcjami + video scrub). GSAP ScrollTrigger snap robi swój
+    // smooth tween — Lenis lerp dodawałby drugi opóźnienie i jankuje.
+    //
+    // Native browser scroll + CSS scroll-behavior:smooth + GSAP snap = clean.
+    return undefined
   }, [])
 
   return <>{children}</>

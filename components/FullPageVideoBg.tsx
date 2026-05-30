@@ -3,20 +3,20 @@
 import { useEffect, useRef, useState } from 'react'
 
 /**
- * FULL PAGE VIDEO BACKGROUND
+ * FULL PAGE VIDEO BACKGROUND — scroll-bound playback.
  *
- * Cinematic video reel jako stałe tło CAŁEJ strony.
+ * Video jest TŁEM CAŁEJ STRONY i jednocześnie GŁÓWNĄ ANIMACJĄ.
+ * Sterowany ScrollSnapController (oddzielny komponent) który ustawia
+ * video.currentTime = scrollProgress * duration.
+ *
  *  - position: fixed, z-index: 0 (za content)
- *  - autoplay, loop, muted, playsInline (iOS friendly)
- *  - object-cover żeby pokryć każdy viewport (mobile vertical, desktop wide)
- *  - Dark gradient overlay dla readability content
- *  - prefers-reduced-motion: poster zamiast video (no animation)
- *  - Mobile: 480p source, desktop: 720p source
- *
- * Sekcje strony siedzą NAD tym tłem z transparent/semi-transparent bg.
- * Każda sekcja ma własny backdrop overlay (np. bg-[#0a0908]/60) dla readability.
- *
- * 60fps motion-interpolated dla absolutnej płynności.
+ *  - NO autoplay (sterowany scrollem)
+ *  - muted, playsInline (iOS friendly)
+ *  - 120fps source dla max scroll smoothness
+ *  - object-cover pokrywa każdy viewport
+ *  - Dark overlay (65%) + vignette + grain dla content readability
+ *  - prefers-reduced-motion: tylko poster, no video
+ *  - Mobile: 720p 60fps fallback (mniej procka)
  */
 
 export default function FullPageVideoBg() {
@@ -25,9 +25,10 @@ export default function FullPageVideoBg() {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    // Respect prefers-reduced-motion — only poster, no video
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduce) setEnabled(false)
+    // prefers-reduced-motion → tylko poster
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setEnabled(false)
+    }
   }, [])
 
   useEffect(() => {
@@ -35,15 +36,20 @@ export default function FullPageVideoBg() {
     const v = videoRef.current
     if (!v) return
 
+    // Expose globally for ScrollSnapController
+    ;(window as any).__redmindBgVideo = v
+
     const onCanPlay = () => {
       setLoaded(true)
-      v.play().catch(() => {
-        // Autoplay blocked — show poster fallback
-        setEnabled(false)
-      })
+      // First frame visible — pause immediately (scroll bind takes over)
+      v.pause()
     }
     v.addEventListener('canplay', onCanPlay)
-    return () => v.removeEventListener('canplay', onCanPlay)
+
+    return () => {
+      v.removeEventListener('canplay', onCanPlay)
+      delete (window as any).__redmindBgVideo
+    }
   }, [enabled])
 
   return (
@@ -61,27 +67,27 @@ export default function FullPageVideoBg() {
         }}
       />
 
-      {/* Video — fades in once ready */}
       {enabled && (
         <video
           ref={videoRef}
+          data-redmind-bg="true"
           className="absolute inset-0 h-full w-full object-cover"
           style={{
             opacity: loaded ? 1 : 0,
             transition: 'opacity 1.2s ease',
           }}
           muted
-          loop
           playsInline
-          autoPlay
           preload="auto"
           poster="/videos/redmind-bg-poster.jpg"
         >
+          {/* Desktop: 60fps 1080p (44MB) — temp, do zamiany na 120fps po encodzie */}
           <source
             src="/videos/redmind-bg-60fps.mp4"
             type="video/mp4"
             media="(min-width: 768px)"
           />
+          {/* Mobile: 60fps 720p (9.7MB) */}
           <source
             src="/videos/redmind-bg-60fps-mobile.mp4"
             type="video/mp4"
@@ -89,10 +95,8 @@ export default function FullPageVideoBg() {
         </video>
       )}
 
-      {/* === Multi-layer dark overlay for content readability === */}
-      {/* Solid base — keeps text-content nad-video legible */}
-      <div className="absolute inset-0 bg-[#0a0908]/72" />
-      {/* Subtle vignette — focuses attention center */}
+      {/* Multi-layer dark overlay for content readability */}
+      <div className="absolute inset-0 bg-[#0a0908]/65" />
       <div
         className="absolute inset-0"
         style={{
@@ -100,7 +104,6 @@ export default function FullPageVideoBg() {
             'radial-gradient(ellipse at center, transparent 30%, rgba(10,9,8,0.4) 100%)',
         }}
       />
-      {/* Slight grain texture overlay (via CSS gradient) */}
       <div
         className="absolute inset-0 opacity-[0.025] mix-blend-overlay"
         style={{

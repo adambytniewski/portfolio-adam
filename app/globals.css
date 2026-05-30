@@ -14,12 +14,14 @@ html {
   color-scheme: dark;
   /* Mobile: zapobiega horizontal scroll od GSAP animacji (x: ±N, parallax).
      UŻYWAMY `clip` zamiast `hidden` — `hidden` tworzy scroll-container co
-     łamie `position: sticky` w głębi drzewa (Showpiece section). `clip`
-     daje to samo wizualnie ale bez przekształcania w containing block. */
+     łamie `position: sticky` w głębi drzewa. `clip` daje to samo wizualnie
+     ale bez przekształcania w containing block. */
   overflow-x: clip;
   /* iOS Safari nie skaluje fontów przy rotacji */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Smooth scroll fallback gdyby GSAP snap nie zadziałał (np. JS disabled) */
+  scroll-behavior: smooth;
 }
 
 body {

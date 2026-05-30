@@ -6,6 +6,7 @@ import SmoothScroll from '../components/SmoothScroll'
 import MagneticCursor from '../components/UI/MagneticCursor'
 import Preloader from '../components/UI/Preloader'
 import FullPageVideoBg from '../components/FullPageVideoBg'
+import ScrollSnapController from '../components/ScrollSnapController'
 import './globals.css'
 
 const fraunces = Fraunces({
@@ -63,6 +64,8 @@ export default function RootLayout({
       <body className="font-mono antialiased">
         {/* GLOBAL VIDEO BACKGROUND — fixed pos, za całą stroną */}
         <FullPageVideoBg />
+        {/* SCROLL SNAP + VIDEO SCRUB — sterowanie video.currentTime przez scroll */}
+        <ScrollSnapController />
         <Preloader />
         <MagneticCursor />
         <SmoothScroll>{children}</SmoothScroll>
