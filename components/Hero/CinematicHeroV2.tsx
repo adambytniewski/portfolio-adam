@@ -409,20 +409,20 @@ export default function CinematicHeroV2() {
 
           {/* Sub-copy */}
           <p className="hero-v2-meta mt-6 max-w-xl font-mono text-[13px] leading-relaxed text-white/70 md:mt-8 md:text-sm">
-            Cinematic Next.js dla polskich firm.
-            <br className="hidden sm:block" />
-            Premium 3D, AI features, mierzalna konwersja — Twoja strona
-            zostaje w głowie klienta jak dobry film.
+            Cinematic Next.js dla polskich firm.{' '}
+            <span className="text-white">7 na 10 klientów</span> idzie do
+            trzeciego wyniku w Google. Bez własnej strony — nawet jeśli jesteś
+            dwa razy lepszy, oni Cię nie znajdą.
           </p>
 
           {/* Dual CTAs */}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center md:mt-10">
             <a
-              href="#brief"
+              href="#mockup"
               data-magnetic
               className="hero-v2-cta group inline-flex items-center justify-center gap-3 rounded-full bg-[#d4a574] px-6 py-4 font-mono text-[11px] uppercase tracking-[0.22em] text-[#0a0908] transition-all hover:bg-white md:px-7 md:text-[12px]"
             >
-              Wyceń swoją stronę
+              Darmowy mockup w 48h
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>

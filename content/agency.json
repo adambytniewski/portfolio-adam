@@ -7,6 +7,45 @@
     "location": "Polska · CET",
     "founded": 2026
   },
+  "hook": {
+    "eyebrow": "— Brzydka prawda",
+    "headline": "7 na 10 klientów",
+    "headlineAccent": "nie znajdzie Cię",
+    "headlineTail": "w Google.",
+    "body": "Nawet jeśli Twoja firma jest dwa razy lepsza od konkurencji — bez własnej strony klient kliknie w trzeci wynik. Każdy miesiąc bez strony to dziesiątki ludzi, którzy nigdy do Ciebie nie trafili.",
+    "stats": [
+      { "n": "7/10", "label": "klientów wybiera trzeci wynik w Google" },
+      { "n": "48h", "label": "wystarczy by zobaczyć Twój mockup" },
+      { "n": "0 zł", "label": "kosztuje pierwsza wycena i mockup" }
+    ]
+  },
+  "freeMockup": {
+    "eyebrow": "— Zacznijmy od konkretu",
+    "headline": "DARMOWY mockup",
+    "headlineAccent": "Twojej strony",
+    "headlineTail": "w 48 godzin.",
+    "body": "Bez umowy. Bez płatności. Bez sales-call'a. Wyślij brief — w 48 godzin masz w mailu wizualizację Twojej przyszłej strony zrobioną pod Twoją branżę i Twoich klientów.",
+    "promise": [
+      "Otrzymasz mockup w 48 godzin — gotowy do oceny",
+      "Zerkasz, oceniasz, decydujesz w swoim tempie",
+      "Spodoba się — gadamy o wdrożeniu",
+      "Nie spodoba — nic się nie dzieje. Bez follow-up'ów"
+    ]
+  },
+  "subscription": {
+    "eyebrow": "— Subskrypcja, nie wielki rachunek",
+    "headline": "Wszystko w jednym.",
+    "headlineAccent": "Bez surprise-bila.",
+    "body": "Zamiast jednorazowej faktury na kilkanaście tysięcy — miesięczna subskrypcja która obejmuje wszystko czego strona potrzebuje, żeby żyć. Cena dopasowana indywidualnie do Twojej branży i zakresu.",
+    "includes": [
+      { "icon": "domena", "label": "Domena", "desc": "Kupiona w Twoim imieniu, na Twoje dane" },
+      { "icon": "hosting", "label": "Hosting Vercel", "desc": "Najszybszy CDN w Polsce, bez limitów ruchu" },
+      { "icon": "ssl", "label": "Certyfikat SSL", "desc": "Zielona kłódeczka, auto-odnawiana" },
+      { "icon": "updates", "label": "Aktualizacje", "desc": "Drobne zmiany contentu, bug-fixy" },
+      { "icon": "monitoring", "label": "Monitoring 24/7", "desc": "Jeśli strona padnie, wiem zanim Ty" },
+      { "icon": "support", "label": "Wsparcie", "desc": "Odpowiadam w 24h, nie 'za miesiąc'" }
+    ]
+  },
   "whyUs": [
     {
       "n": "01",
@@ -133,8 +172,16 @@
   ],
   "faq": [
     {
+      "q": "Czy mogę zobaczyć mockup ZANIM cokolwiek zapłacę?",
+      "a": "Tak — to mój standardowy proces. Wyślij brief, w 48 godzin dostajesz w mailu wizualizację Twojej strony zrobioną pod Twoją branżę. Bez umowy, bez płatności, bez sales-call'a. Spodoba się — gadamy o wdrożeniu. Nie spodoba — nic się nie dzieje."
+    },
+    {
       "q": "Ile to kosztuje?",
-      "a": "Każdy projekt ma indywidualną wycenę — bo każda branża, każdy klient i każdy zakres są inne. Wyślij brief lub napisz mail, w ciągu 24h dostajesz konkretną liczbę dopasowaną do Twojej sytuacji. Bez cenników, bez 'od X do Y'. Konkret."
+      "a": "Każdy projekt ma indywidualną wycenę — bo każda branża, każdy klient i każdy zakres są inne. Po DARMOWYM mockupie w 48h dostajesz konkretną liczbę dopasowaną do Twojej sytuacji. Bez cenników, bez 'od X do Y'. Możesz też wybrać subskrypcję miesięczną (wszystko w jednym) zamiast wielkiego rachunku jednorazowego."
+    },
+    {
+      "q": "Co dokładnie wchodzi w subskrypcję miesięczną?",
+      "a": "Domena (kupiona na Twoje dane), hosting Vercel (najszybszy CDN w Polsce, bez limitów), certyfikat SSL (auto-odnawiany), drobne aktualizacje contentu, monitoring 24/7 (jeśli strona padnie, wiem zanim Ty), wsparcie z odpowiedzią w 24h. Konkretna kwota zależy od zakresu — wyceniamy razem po mockupie."
     },
     {
       "q": "Ile to wszystko trwa?",
